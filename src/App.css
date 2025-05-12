@@ -1,0 +1,452 @@
+/* PAGINA PRINCIPAL */
+
+@font-face {
+  font-family: 'croissantOne';
+  src: url('/fonts/CroissantOne-Regular.ttf');
+  font-weight: bold;
+  font-style: bold;
+}
+@font-face {
+  font-family: 'justa';
+  src: url('/fonts/SVQ-Justa.ttf');
+  font-weight: bold;
+  font-style: bold;
+}
+
+.nav-order {
+  display: flex;
+  justify-content: center;
+}
+
+.fullscreen-container {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  background-image: url("/imgs/sevillaciudad.jpg");
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #242424;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  width: 32%;
+  z-index: 999;
+}
+
+.carousel {
+  background-color: rgba(114, 57, 65, 0.9);
+}
+
+.navbar-1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(114, 57, 65, 0.9);
+  backdrop-filter: blur(5px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+}
+
+.nav-list {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin-bottom: .4rem !important;
+  margin-top: .4rem !important;
+  gap: 1rem;
+}
+
+.nav-element {
+  text-decoration: none;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.nav-element-login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  right: -30%;
+  top: 0;
+  gap: .2rem;
+  padding: .1rem 1rem;
+  text-decoration: none;
+}
+
+.nav-element-login a {
+  text-decoration: none;
+  color: white;
+  font-family: 'croissantOne';
+  transition: color 0.3s ease-in-out;
+}
+
+.nav-links {
+  position: relative; /* Necesario para posicionar el ::after */
+  text-decoration: none;
+  color: white;
+  font-family: 'croissantOne';
+  transition: color 0.3s ease-in-out;
+}
+
+.nav-links::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: white;
+  transition: width 0.2s ease-in-out;
+}
+
+.nav-links:hover::after {
+  width: 100%;
+}
+
+.register {
+  padding: .1rem 1rem;
+  color: white;
+  background-color: rgba(114, 57, 65, 0.9);
+  border-radius: .5rem;
+}
+
+.login {
+  padding: .1rem .5rem;
+  color: white;
+  background-color: rgba(114, 57, 65, 0.9);
+  border-radius: .5rem;
+}
+
+.register:hover,
+.login:hover {
+  background-color:white;
+  color: rgba(114, 57, 65, 0.9);
+  transition: background-color 0.7s;
+}
+
+.scroll-down {
+  display: flex;
+  font-size: 24px;
+  color: white;
+  align-items: center;
+  flex-direction: column;
+  margin: 0 auto;
+  user-select: none;
+  z-index: 99;
+}
+
+.scroll-down-text {
+  text-shadow: 0 0 5px #212121, 0 0 5px #212121, 0 0 5px #212121, 0 0 10px #212121, 0 0 10px #212121;
+  color: white;
+}
+
+.logo-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99;
+}
+
+.sub-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.title {
+  /*font-family: 'croissantOne';*/
+  width: 100%;
+  font-family: 'justa';
+  font-size: 6rem;
+  padding: 1rem;
+  margin-top: 5rem;
+  margin-bottom: 0.1rem !important;
+  background-color: rgba(114, 57, 65, 0.9);
+  color: white;
+  text-align: center;
+}
+
+/* Contenedor del contenido del carrusel */
+.carousel-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 85vh;
+}
+
+/* Imagen del carrusel */
+.carousel-content img {
+  flex: 1;
+  object-fit: cover;
+}
+
+/* Texto del carrusel */
+.carousel-text {
+  flex: 1;
+  padding: 2rem;
+  text-align: center;
+  color: white;
+}
+
+.carousel-text h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.carousel-text p {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/*HEADER SPECS*/
+
+/* Header visible */
+.header-visible {
+  transform: translateY(0);
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Header oculto */
+.header-hidden {
+  transform: translateY(-110%);
+  transition: transform 0.3s ease-in-out;
+}
+
+/* FOOTER */
+
+.footer {
+  display: flex;
+  background-color: rgba(114, 57, 65, 0.9);
+  padding: .5rem;
+  color: white;
+  font-family: 'croissantOne';
+  font-size: .9rem;
+}
+
+.link {
+  text-decoration: none;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+}
+
+.link:hover {
+  text-shadow: 0 0 5px white, 0 0 5px white, 0 0 5px white, 0 0 10px white, 0 0 10px white;
+  color: rgba(114, 57, 65, 0.9);
+  transition: all 0.2s ease-in-out;
+}
+
+/*TEST CARDS*/
+
+.img-card-product {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/*TEST CART*/
+
+.container-products {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem;
+  align-items: stretch;
+  user-select: none;
+}
+
+.cards {
+  position: relative;
+  text-align: center;
+  min-height: 400px;
+  max-width: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #3b3b3b52;
+  padding: 1rem;
+  border-radius: 10px;
+  background-color: #fff;
+  transition: all 0.2s ease;
+  overflow: hidden;
+}
+
+.cards:hover {
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgb(136, 99, 104);
+}
+
+.limited-text {
+  width: 300px;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.btn-space {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.btn-buy {
+  position: absolute;
+  width: 100%;
+  bottom: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  background-color: rgb(136, 99, 104);
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  transition: all 0.5s ease;
+  opacity: 0;
+}
+
+.cards:hover .btn-buy {
+  bottom: 0px;
+  opacity: 1;
+}
+
+.cart {
+  padding: 1rem;
+}
+
+.cart-container {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding: 1rem;
+}
+
+.card {
+  flex: 0 0 auto;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  padding: 1rem;
+}
+
+.card img {
+  border-radius: 5px;
+}
+
+.card-body {
+  margin-top: 0.5rem;
+}
+
+.cart-container::-webkit-scrollbar {
+  height: 8px; /* Altura del scrollbar */
+}
+
+.cart-container::-webkit-scrollbar-thumb {
+  background-color: rgba(114, 57, 65, 0.9); /* Color del scrollbar */
+  border-radius: 4px;
+}
+
+.cart-container::-webkit-scrollbar-track {
+  background-color: #f1f1f1; /* Fondo del scrollbar */
+}
+
+.cart-btn {
+  position: fixed;
+  bottom: 5%;
+  left: 95%;
+  transform: translateX(-50%);
+  background-color: rgb(136, 99, 104);
+  color: white;
+  padding: 0.3rem;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color .5s ease;
+}
+
+.cart-count {
+  font-family: 'croissantOne';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -35%);
+  color: white;
+  font-size: 1rem;
+  text-shadow: 0 0 2px black, 0 0 5px black;
+}
+
+.cart-btn:hover {
+  background-color: rgb(201, 92, 108);
+}
+
+.cart-modal {
+  position: fixed;
+  bottom: -450px;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  border-top: 2px solid #ccc;
+  padding: 20px;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+  transition: bottom 0.5s cubic-bezier(0.25, 1, 0.5, 1); 
+  z-index: 1000;
+  min-height: 200px;
+  overflow-y: auto;
+}
+
+.cart-modal.show {
+  bottom: 0;
+}
+
+.cart-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'croissantOne';
+  margin-bottom: 10px;
+}
+
+.cart-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.close-cart-btn {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #555;
+}
+
+.close-cart-btn:hover {
+  color: #000;
+}
