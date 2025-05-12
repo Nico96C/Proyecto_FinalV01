@@ -1,24 +1,25 @@
-import Nav from "./Nav";
 import "../App.css";
 
 function Contact() {
   return (
     <>
-      <div className="contact">
-        <h2>Contact Us</h2>
-        <p>If you have any questions, feel free to reach out!</p>
-        <form>
-          <label htmlFor="name">Name:</label>
-          <input type="text" id="name" name="name" required />
+      <div className="fullscreen-container">
+        <div className="contact">
+          <h2>Contact Us</h2>
+          <p>If you have any questions, feel free to reach out!</p>
+          <form>
+            <label htmlFor="name">Name:</label>
+            <input type="text" id="name" name="name" required />
 
-          <label htmlFor="email">Email:</label>
-          <input type="email" id="email" name="email" required />
+            <label htmlFor="email">Email:</label>
+            <input type="email" id="email" name="email" required />
 
-          <label htmlFor="message">Message:</label>
-          <textarea id="message" name="message" required></textarea>
+            <label htmlFor="message">Message:</label>
+            <textarea id="message" name="message" required></textarea>
 
-          <button type="submit">Send</button>
-        </form>
+            <button type="submit">Send</button>
+          </form>
+        </div>
       </div>
     </>
   );

@@ -2,7 +2,7 @@
 function Agenda() {
     return(
         <div className="agenda">
-            <h1 className="agenda-title">Agenda</h1>
+            <h1 className="agenda-title" id="agenda">Agenda</h1>
             <div className="agenda-content">
                 <p>¡Bienvenidos a nuestra agenda de eventos! Aquí encontrarás una lista de actividades emocionantes que hemos planeado para ti. Desde talleres interactivos hasta charlas inspiradoras, hay algo para todos. ¡No te lo pierdas!</p>
                 <ul className="agenda-list">

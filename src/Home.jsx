@@ -1,5 +1,4 @@
 import "./App.css";
-import { useEffect, useState } from "react";
 import HeadTop from "./components/Header";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
@@ -7,17 +6,11 @@ import resto3 from "/imgs/carousel/3.jpg";
 //import productos from "./products.json";
 import Footer from "./components/Footer";
 import Agenda from "./components/agenda.jsx";
+import { Link } from "react-router-dom";
 
 import { ToastContainer, toast, Slide } from "react-toastify";
 
-function Home({ addCart }) {
-  const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    fetch("https://682219c0b342dce8004d1dd0.mockapi.io/SevApi/productos")
-      .then((res) => res.json())
-      .then((data) => setProducts(data));
-  }, []);
+function Home({ addCart, products }) {
 
   const notify = () => {
     toast.dismiss();
@@ -152,6 +145,11 @@ function Home({ addCart }) {
             transition={Slide}
           />
         </div>
+        <button className="btn btn-danger" id="btn-menu">
+          <Link to="/menu" className="btn-menu">
+            Ver Menu Completo
+          </Link>
+        </button>
       </main>
 
       <Agenda />

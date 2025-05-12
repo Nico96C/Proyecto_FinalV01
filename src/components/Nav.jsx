@@ -33,20 +33,20 @@ function Nav() {
             <Link className="nav-links" to="/">INICIO</Link>
           </li>
           <li className="nav-element">
-            <Link className="nav-links" to="#historia">HISTORIA</Link>
+            <a className="nav-links" href="#historia">HISTORIA</a>
           </li>
           <li className="nav-element">
-            <Link className="nav-links" to="#menu">MENU</Link>
+            <a className="nav-links" href="#menu">MENU</a>
           </li>
           <li className="nav-element">
-            <Link className="nav-links" to="#">AGENDA</Link>
+            <a className="nav-links" href="#agenda">AGENDA</a>
           </li>
           <li className="nav-element">
             <Link className="nav-links" to="/contact">CONTACTO</Link>
           </li>
           <li className="nav-element-login">
             <Link className="register" to="#">REGISTRARSE</Link>
-            <Link className="login" to="#">INICIAR SESIÓN</Link>
+            <Link className="login" to="/login">INICIAR SESIÓN</Link>
           </li>
         </ul>
       </nav>
