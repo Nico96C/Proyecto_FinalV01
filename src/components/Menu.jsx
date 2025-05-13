@@ -1,8 +1,17 @@
 import { Link } from "react-router-dom";
 import "../App.css";
+import { useState } from "react";
+import HiddenIcon from "../../public/imgs/hidden";
+import ShowIcon from "../../public/imgs/show";
 
 function Menu({ addCart, products }) {
   const arrayProductos = products;
+
+  const [visibleCardId, setVisibleCardId] = useState(false);
+
+  const toggleCardVisibility = (id) => {
+    setVisibleCardId((prevId) => (prevId === id ? null : id));
+  };
 
   return (
     <div className="container">
@@ -11,20 +20,12 @@ function Menu({ addCart, products }) {
       </h1>
       <div className="container-products">
         {arrayProductos.map((producto) => (
-          <div key={producto.id} className="cards">
-            <a
-              href="#!"
-              tabIndex="0"
-              className="btn btn-lg popover-dismiss"
-              role="button"
-              data-bs-placement="bottom"
-              data-bs-toggle="popover"
-              data-bs-trigger="focus"
-              data-bs-content={producto.description}
-              title={producto.title}
-            >
-              info
-            </a>
+          <div
+            key={producto.id}
+            className={`cards-menu ${
+              visibleCardId === producto.id ? "show" : "hidden"
+            }`}
+          >
             <Link to={`/menu/${producto.id}`}>
               <img
                 src={producto.img}
@@ -32,16 +33,22 @@ function Menu({ addCart, products }) {
                 className="img-card-product"
               />
             </Link>
-            <h5>{producto.name}</h5>
-            <p>{producto.description}</p>
+            <h5 className="menu-title">{producto.name}</h5>
+            <p className="limited-text">{producto.description}</p>
             <p>${producto.price}</p>
             <div className="btn-space"></div>
             <button
               id={producto.id}
-              className="btn-buy"
+              className="btn-buy-2"
               onClick={() => addCart(producto)}
             >
-              Agregar Pedido +
+              Agregar Pedido
+            </button>
+            <button
+              className="toggle-btn"
+              onClick={() => toggleCardVisibility(producto.id)}
+            >
+              {visibleCardId === producto.id ? <HiddenIcon /> : <ShowIcon />}
             </button>
           </div>
         ))}
