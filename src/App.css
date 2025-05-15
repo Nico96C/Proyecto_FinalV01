@@ -254,7 +254,7 @@
 /*TEST CARDS*/
 
 .img-card-product {
-  width: 100%;
+  width: 30%;
   height: 200px;
   object-fit: cover;
   border-radius: 10px;
@@ -460,18 +460,7 @@
   text-align: center;
 }
 
-.cards-menu.hidden {
-  overflow: hidden;
-  max-height: 300px;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  align-items: center;
-  gap: 2rem;
-  transition: all 0.5s ease;
-}
-
-.cards-menu.show {
+.cards-menu {
   position: relative;
   display: flex;
   min-width: 80%;
@@ -500,16 +489,6 @@
   opacity: 0;
 }
 
-.cards-menu.show:hover .btn-buy-2 {
-  bottom: -1px;
-  opacity: 1;
-  transition: all 0.5s ease;
-}
-
-.cards-menu.hidden:hover .btn-buy-2 {
-  display: none;
-}
-
 .toggle-btn {
   position: absolute;
   background-color: rgb(136, 99, 104);
@@ -521,7 +500,24 @@
   transition: all 0.5s ease;
 }
 
-.cards-menu.hidden:hover .toggle-btn {
-  opacity: 1;
-  transition: all 0.5s ease;
+.container-menu {
+  gap: 2rem;
+  padding: 2rem;
+  user-select: none;
+}
+
+.accordion-button {
+  font-family: 'croissantOne' !important;
+  font-size: 1.5rem !important;
+  color: white !important;
+  background-color: rgba(114, 57, 65, 0.9) !important;
+}
+
+.accordion-button:focus {
+  box-shadow: none !important;
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: white !important;
+  color: rgba(114, 57, 65, 0.9) !important;
 }
