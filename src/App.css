@@ -13,6 +13,15 @@
   font-style: bold;
 }
 
+/*APP*/
+
+#root {
+  font-family: 'croissantOne';
+  background-color: #242424;
+}
+
+/*----*/
+
 .nav-order {
   display: flex;
   justify-content: center;
@@ -181,6 +190,26 @@
   text-align: center;
 }
 
+.subtitle-menus {
+  font-family: 'croissantOne';
+  font-size: 2rem;
+  padding: 1rem;
+  margin-top: 0.1rem !important;
+  margin-bottom: 0.1rem !important;
+  background-color: rgba(114, 57, 65, 0.9);
+  border: 1px solid white;
+  color: white;
+  text-align: center;
+  align-content: center;
+}
+
+.subtitle-menus:hover {
+  background-color: white;
+  color: rgba(114, 57, 65, 0.9);
+  border: 1px solid rgba(114, 57, 65, 0.9);
+  transition: background-color 0.7s;
+}
+
 /* Contenedor del contenido del carrusel */
 .carousel-content {
   display: flex;
@@ -260,17 +289,110 @@
   border-radius: 10px;
 }
 
-/*TEST CART*/
+.img-card-product-home {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+}
 
 .container-products {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2rem;
   padding: 2rem;
-  align-items: stretch;
   user-select: none;
 }
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+  gap: 2rem;
+  margin: 1rem;
+}
+
+.products:hover {
+  overflow: hidden;
+}
+
+.btn-menu-complete {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: rgb(136, 99, 104);
+  padding: 0.5rem 1rem;
+  border: none;
+  transition: all 0.5s ease;
+}
+
+.btn-menu-complete a {
+  text-decoration: none;
+  color: white;
+}
+
+/*CARD FLIP MENU*/
+
+.menu-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+  height: 100vh;
+  background-image: url("/imgs/menus.jpg");
+}
+
+.menu-items {
+  display: flex;
+  gap: 2rem;
+}
+
+.menu-title-home {
+  font-family: 'croissantOne' !important;
+  font-size: 4rem;
+  text-align: center;
+  color: white;
+}
+
+.flip-card {
+  background-color: transparent;
+  width: 350px;
+  height: 400px;
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+  font-family: 'croissantOne';
+  background-color: rgba(136, 99, 104, 0.5);
+  color: white;
+}
+
+.flip-card-back {
+  font-family: 'croissantOne';
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  transform: rotateY(180deg);
+}
+
+/*TEST CART*/
 
 .cards {
   position: relative;
@@ -489,14 +611,33 @@
   opacity: 0;
 }
 
+.cards-menu:hover .toggle-btn{
+  transform: translateX(440%) translateY(215%);
+  opacity: 1;
+}
+
 .toggle-btn {
   position: absolute;
-  background-color: rgb(136, 99, 104);
+  background: none;
   color: white;
   border: none;
   border-radius: 10px;
-  cursor: pointer;
-  transform: translateY(-50%);
+  opacity: 0;
+  transform: translateX(-400%);
+  transition: all 0.5s ease;
+}
+
+.btn-info {
+  text-decoration: none;
+  color: white;
+  font-size: 1.5rem;
+  font-family: 'croissantOne';
+  text-shadow: 0 0 5px rgba(114, 57, 65, 0.9), 0 0 5px rgba(114, 57, 65, 0.9), 0 0 5px rgba(114, 57, 65, 0.9), 0 0 10px rgba(114, 57, 65, 0.9), 0 0 10px rgba(114, 57, 65, 0.9);
+}
+
+.btn-info:hover {
+  color: rgba(114, 57, 65, 0.9);
+  text-shadow: 0 0 5px white, 0 0 5px white, 0 0 5px white, 0 0 10px white, 0 0 10px white;
   transition: all 0.5s ease;
 }
 
@@ -520,4 +661,22 @@
 .accordion-button:not(.collapsed) {
   background-color: white !important;
   color: rgba(114, 57, 65, 0.9) !important;
+}
+
+/* LOGINS */
+
+.container-login-header {
+  font-family: 'croissantOne' !important;
+  color: white;
+}
+
+.login-form {
+  font-family: 'croissantOne' !important;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgba(114, 57, 65, 0.9);
+  padding: 5rem;
+  border: 1px solid white;
 }

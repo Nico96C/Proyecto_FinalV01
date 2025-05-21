@@ -11,6 +11,17 @@ import { Link } from "react-router-dom";
 import { ToastContainer, toast, Slide } from "react-toastify";
 
 function Home({ addCart, products }) {
+  const productosA = products.filter(
+    (producto) => producto.category === "Entrante"
+  );
+
+  const productosB = products.filter(
+    (producto) => producto.category === "Principal"
+  );
+
+  const productosC = products.filter(
+    (producto) => producto.category === "Postre"
+  );
 
   const notify = () => {
     toast.dismiss();
@@ -109,28 +120,130 @@ function Home({ addCart, products }) {
             necesidades.
           </p>
 
-          <div id="menu" className="history">
-            <h1>MENU</h1>
+          <div id="menu" className="menu-container">
+            <h1 className="menu-title-home">MENU</h1>
+
+            <div className="menu-items">
+              <div className="flip-card">
+                <div className="flip-card-inner">
+                  <div className="flip-card-front">
+                    <h1>JOHN</h1>
+                  </div>
+                  <div className="flip-card-back">
+                    <h1>Other Text</h1>
+                    <p>Architect & Engineer</p>
+                    <p>We love that guy</p>
+                  </div>
+                </div>
+              </div>
+              <div className="flip-card">
+                <div className="flip-card-inner">
+                  <div className="flip-card-front">
+                    <h1>JOHN</h1>
+                  </div>
+                  <div className="flip-card-back">
+                    <h1>Other Text</h1>
+                    <p>Architect & Engineer</p>
+                    <p>We love that guy</p>
+                  </div>
+                </div>
+              </div>
+              <div className="flip-card">
+                <div className="flip-card-inner">
+                  <div className="flip-card-front">
+                    <h1>JOHN</h1>
+                  </div>
+                  <div className="flip-card-back">
+                    <h1>Other Text</h1>
+                    <p>Architect & Engineer</p>
+                    <p>We love that guy</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
+        <h1> LO MAS POPULAR EN PEDIDOS </h1>
         <div className="container-products">
-          {products.map((producto) => (
-            <div key={producto.id} className="cards">
-              <img
-                className="img-card-product"
-                src={producto.img}
-                alt={producto.title}
-              />
-              <h5>{producto.name}</h5>
-              <p className="limited-text">{producto.description}</p>
-              <p>${producto.price}</p>
-              <div className="btn-space"></div>
-              <button className="btn-buy" onClick={() => { addCart(producto); notify(); }}>
-                Agregar al carrito
-              </button>
-            </div>
-          ))}
+          <div className="products">
+            <h2 className="subtitle-menus">Entrantes</h2>
+            {productosA.slice(0, 4).map((producto) => (
+              <div key={producto.id} className="cards">
+                <img
+                  className="img-card-product-home"
+                  src={producto.img}
+                  alt={producto.title}
+                />
+                <h5>{producto.name}</h5>
+                <p className="limited-text">{producto.description}</p>
+                <p> € {producto.price}</p>
+                <div className="btn-space"></div>
+                <button
+                  className="btn-buy"
+                  onClick={() => {
+                    addCart(producto);
+                    notify();
+                  }}
+                >
+                  Agregar al carrito
+                </button>
+              </div>
+            ))}
+          </div>
+
+          <div className="products">
+            <h2 className="subtitle-menus">Principales</h2>
+            {productosB.slice(0, 4).map((producto) => (
+              <div key={producto.id} className="cards">
+                <img
+                  className="img-card-product-home"
+                  src={producto.img}
+                  alt={producto.title}
+                />
+                <h5>{producto.name}</h5>
+                <p className="limited-text">{producto.description}</p>
+                <p> € {producto.price}</p>
+                <div className="btn-space"></div>
+                <button
+                  className="btn-buy"
+                  onClick={() => {
+                    addCart(producto);
+                    notify();
+                  }}
+                >
+                  Agregar al carrito
+                </button>
+              </div>
+            ))}
+          </div>
+
+          <div className="products">
+            <h2 className="subtitle-menus">Postres</h2>
+            {productosC.slice(0, 4).map((producto) => (
+              <div key={producto.id} className="cards">
+                <img
+                  className="img-card-product-home"
+                  src={producto.img}
+                  alt={producto.title}
+                />
+                <h5>{producto.name}</h5>
+                <p className="limited-text">{producto.description}</p>
+                <p> € {producto.price}</p>
+                <div className="btn-space"></div>
+                <button
+                  className="btn-buy"
+                  onClick={() => {
+                    addCart(producto);
+                    notify();
+                  }}
+                >
+                  Agregar al carrito
+                </button>
+              </div>
+            ))}
+          </div>
+
           <ToastContainer
             position="top-right"
             autoClose={3000}
@@ -145,11 +258,11 @@ function Home({ addCart, products }) {
             transition={Slide}
           />
         </div>
-        <button className="btn btn-danger" id="btn-menu">
+        <div className="btn-menu-complete">
           <Link to="/menu" className="btn-menu">
             Ver Menu Completo
           </Link>
-        </button>
+        </div>
       </main>
 
       <Agenda />

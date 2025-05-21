@@ -17,7 +17,7 @@ function Menu({ addCart, products }) {
   );
 
   return (
-    <div className="container" style={{ justifyContent: "unset", alignItems: "unset" }}>
+    <div className="container" style={{ justifyContent: "unset", alignItems: "unset", padding: "0" }}>
       <h1 className="title" id="menu">
         MENU
       </h1>
@@ -63,7 +63,7 @@ function Menu({ addCart, products }) {
                     <button
                       className="toggle-btn"
                     >
-                      <Link to={`/menu/${producto.id}`}>Info</Link>
+                      <Link to={`/menu/${producto.id}`} className="btn-info">Info</Link>
                     </button>
                   </div>
                 ))}
