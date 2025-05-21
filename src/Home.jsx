@@ -5,7 +5,6 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import resto3 from "/imgs/carousel/3.jpg";
 //import productos from "./products.json";
 import Footer from "./components/Footer";
-import Agenda from "./components/agenda";
 import { Link } from "react-router-dom";
 
 import { ToastContainer, toast, Slide } from "react-toastify";
@@ -265,7 +264,6 @@ function Home({ addCart, products }) {
         </div>
       </main>
 
-      <Agenda />
 
       <Footer />
     </>
