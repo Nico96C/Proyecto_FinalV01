@@ -1,12 +1,34 @@
-# React + Vite
+## Proyecto para pre-entrega.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Resquisitos totales ##
 
-Currently, two official plugins are available:
+1- Funcionabilidad basica de carrito de compras.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# Crear Componente para listar productos disponibles. ✅
+# Hacer uso del Hook useState para manejar estado del Carrito. ✅
+# Implementar evento de Click para agregar productos al Carrito. ✅
+# Lograr mostrar los productos del Carrito en un Componente aparte. ✅
+# Crear un Layout del eCommerce. 
 
-## Expanding the ESLint configuration
+2- Conexión de la Aplicacion con una API para los productos.
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+# Integracion de una API. ✅
+# Estado para cargar y manejo de errores. 
+# Gestion del estado con un useState. ✅
+# Actualizar el diseño del eCommerce. ✅
+# Manejo de efectos secundarios con useEffect. ✅
+# Ampliación del Carrito. 
+
+3- Integración de rutas.
+
+# Implementar rutas. ✅
+# Estado de carga y manejo de errores. 
+# Crear componente para cada sección. ✅
+# Navegación entre productos. ✅
+
+4- Integración tanto de rutas dinámicas como protegidas.
+
+# Rutas de forma dinámica. ✅
+# Interactividad. ✅
+# Rutas de forma protegidas.
+# Añadido de Navbar. ✅
