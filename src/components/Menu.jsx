@@ -33,7 +33,7 @@ function Menu({ addCart, products }) {
                 aria-expanded="false"
                 aria-controls="collapseOne"
               >
-                Accordion Item #1
+                Platos Entrantes
               </button>
             </h2>
             <div
@@ -80,7 +80,7 @@ function Menu({ addCart, products }) {
                 aria-expanded="false"
                 aria-controls="collapseTwo"
               >
-                Accordion Item #2
+                Platos Principales
               </button>
             </h2>
             <div
@@ -110,7 +110,7 @@ function Menu({ addCart, products }) {
                     <button
                       className="toggle-btn"
                     >
-                      <Link to={`/menu/${producto.id}`}>Info</Link>
+                      <Link to={`/menu/${producto.id}`} className="btn-info">Info</Link>
                     </button>
                   </div>
                 ))}
@@ -127,7 +127,7 @@ function Menu({ addCart, products }) {
                 aria-expanded="false"
                 aria-controls="collapseThree"
               >
-                Accordion Item #3
+                Platos de Postre
               </button>
             </h2>
             <div
@@ -157,7 +157,7 @@ function Menu({ addCart, products }) {
                     <button
                       className="toggle-btn"
                     >
-                      <Link to={`/menu/${producto.id}`}>Info</Link>
+                      <Link to={`/menu/${producto.id}`} className="btn-info">Info</Link>
                     </button>
                   </div>
                 ))}

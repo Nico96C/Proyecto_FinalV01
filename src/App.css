@@ -674,21 +674,27 @@
 
 .btn-buy-2 {
   position: absolute;
-  width: 25%;
-  bottom: -20px;
-  left: 75.1%;
+  width: 100%;
+  bottom: -50px;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   background-color: rgb(136, 99, 104);
   color: white;
   padding: 0.5rem 1rem;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
   border: none;
-  border-bottom-right-radius: 5px;
   transition: all 0.5s ease;
   opacity: 0;
 }
 
+.cards-menu:hover .btn-buy-2 {
+  bottom: 0px;
+  opacity: 1;
+}
+
 .cards-menu:hover .toggle-btn {
-  transform: translateX(440%) translateY(215%);
   opacity: 1;
 }
 
@@ -699,7 +705,7 @@
   border: none;
   border-radius: 10px;
   opacity: 0;
-  transform: translateX(-400%);
+  transform: translateX(440%) translateY(-200%);
   transition: all 0.5s ease;
 }
 
