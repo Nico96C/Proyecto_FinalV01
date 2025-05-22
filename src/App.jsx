@@ -16,6 +16,7 @@ import CartView from "./components/cartView";
 import cartIcon from "/imgs/cart.png";
 import Admin from "./components/Admin";
 import Login from "./components/Login";
+import loadingScreen from "/imgs/loading.png"
 
 function App() {
   const [cartItems, setCartItems] = useState([]);
@@ -23,6 +24,9 @@ function App() {
   const [products, setProducts] = useState([]);
   const [userLogin, setUserLogin] = useState(false);
   const [adminLogin, setAdminLogin] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [loadingPercent, setLoadingPercent] = useState(0);
+  /* ESTADOS */
 
   const addCart = (producto) => {
     setCartItems((prevItems) => [...prevItems, producto]);
@@ -39,12 +43,43 @@ function App() {
   const handleCartClick = () => {
     setVisualCart(!visualCart);
   };
+  /*Funciones Carrito que iran al Contexto*/
 
   useEffect(() => {
+    setLoading(true);
+    setLoadingPercent(0);
+
+    const percentInterval = setInterval(() => {
+      setLoadingPercent((prev) => {
+        if (prev < 100) return prev + 1;
+        return 100;
+      });
+    }, 24);
+
+    const timer = setTimeout(() => setLoading(false), 2500);
+
     fetch("https://682219c0b342dce8004d1dd0.mockapi.io/SevApi/productos")
       .then((res) => res.json())
-      .then((data) => setProducts(data));
+      .then((data) => setProducts(data))
+      .catch((error) => console.error("Error de API", error));
+
+    return () => {
+      clearTimeout(timer);
+      clearInterval(percentInterval);
+    };
   }, []);
+  /*API Llamada*/
+
+  if (loading) {
+    return (
+      <div className="loading-screen">
+        <img src={loadingScreen} className="loading-img" width={100} height={100}/>
+        <p className="loading-percent">{loadingPercent} %</p>
+      </div>
+      /*Ira en un componente de pantalla de carga luego*/
+    );
+  }
+
 
   return (
     <Router className="App">

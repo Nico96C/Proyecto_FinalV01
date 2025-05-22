@@ -3,11 +3,11 @@ import HeadTop from "./components/Header";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import resto3 from "/imgs/carousel/3.jpg";
-//import productos from "./products.json";
 import Footer from "./components/Footer";
 import { Link } from "react-router-dom";
 
 import { ToastContainer, toast, Slide } from "react-toastify";
+import MarkIcon from "../public/imgs/mark";
 
 function Home({ addCart, products }) {
   const productosA = products.filter(
@@ -126,36 +126,42 @@ function Home({ addCart, products }) {
               <div className="flip-card">
                 <div className="flip-card-inner">
                   <div className="flip-card-front">
-                    <h1>JOHN</h1>
+                    <MarkIcon width={50} height={80} />
+                    <h1> ENTRANTES </h1>
+                    <p> Lo mejor en cuanto a entradas tipicas provenientes de Sevilla </p>
                   </div>
                   <div className="flip-card-back">
-                    <h1>Other Text</h1>
-                    <p>Architect & Engineer</p>
-                    <p>We love that guy</p>
+                    <button className="btn-flipcard">
+                      Descargar
+                    </button>
                   </div>
                 </div>
               </div>
               <div className="flip-card">
                 <div className="flip-card-inner">
                   <div className="flip-card-front">
-                    <h1>JOHN</h1>
+                    <MarkIcon width={50} height={80}/>
+                    <h1> PRINCIPALES </h1>
+                    <p> Platos de lo mas variado para unas comidas principales con el toque andaluz </p>
                   </div>
                   <div className="flip-card-back">
-                    <h1>Other Text</h1>
-                    <p>Architect & Engineer</p>
-                    <p>We love that guy</p>
+                    <button className="btn-flipcard">
+                      Descargar
+                    </button>
                   </div>
                 </div>
               </div>
               <div className="flip-card">
                 <div className="flip-card-inner">
                   <div className="flip-card-front">
-                    <h1>JOHN</h1>
+                    <MarkIcon width={50} height={80} />
+                    <h1> POSTRES </h1>
+                    <p> Unos postres de alta categoria para cerrar una comida completa </p>
                   </div>
                   <div className="flip-card-back">
-                    <h1>Other Text</h1>
-                    <p>Architect & Engineer</p>
-                    <p>We love that guy</p>
+                    <button className="btn-flipcard">
+                      Descargar
+                    </button>
                   </div>
                 </div>
               </div>

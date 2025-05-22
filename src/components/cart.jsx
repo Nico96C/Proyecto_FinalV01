@@ -1,12 +1,6 @@
-import { useState } from "react";
-
 function Cart({ cartItems }) {
 
   const limitedCartItems = cartItems;
-
-  function deleteItem(id) {
-    setItems((prevItems) => prevItems.filter((item) => item.id !== id));
-  }
 
   return (
     <div className="cart">

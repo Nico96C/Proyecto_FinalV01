@@ -1,14 +1,14 @@
 /* PAGINA PRINCIPAL */
 
 @font-face {
-  font-family: 'croissantOne';
-  src: url('/fonts/CroissantOne-Regular.ttf');
+  font-family: "croissantOne";
+  src: url("/fonts/CroissantOne-Regular.ttf");
   font-weight: bold;
   font-style: bold;
 }
 @font-face {
-  font-family: 'justa';
-  src: url('/fonts/SVQ-Justa.ttf');
+  font-family: "justa";
+  src: url("/fonts/SVQ-Justa.ttf");
   font-weight: bold;
   font-style: bold;
 }
@@ -16,11 +16,53 @@
 /*APP*/
 
 #root {
-  font-family: 'croissantOne';
+  font-family: "croissantOne";
   background-color: #242424;
 }
 
 /*----*/
+
+/* LOADING SCREEN */
+
+.loading-screen {
+  width: 100%;
+  height: 100vh;
+  background-color: #242424;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.loading-img {
+  animation: loading-io 2.5s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+}
+
+@keyframes loading-io {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+}
+
+.loading-percent {
+  font-family: "croissantOne";
+  font-size: 2rem;
+  color: white;
+  text-shadow: 0 0 5px #212121, 0 0 5px #212121, 0 0 5px #212121,
+    0 0 10px #212121, 0 0 10px #212121;
+}
+
+/* HOME */
 
 .nav-order {
   display: flex;
@@ -70,8 +112,8 @@
   display: flex;
   list-style: none;
   padding: 0;
-  margin-bottom: .4rem !important;
-  margin-top: .4rem !important;
+  margin-bottom: 0.4rem !important;
+  margin-top: 0.4rem !important;
   gap: 1rem;
 }
 
@@ -90,15 +132,15 @@
   position: fixed;
   right: -30%;
   top: 0;
-  gap: .2rem;
-  padding: .1rem 1rem;
+  gap: 0.2rem;
+  padding: 0.1rem 1rem;
   text-decoration: none;
 }
 
 .nav-element-login a {
   text-decoration: none;
   color: white;
-  font-family: 'croissantOne';
+  font-family: "croissantOne";
   transition: color 0.3s ease-in-out;
 }
 
@@ -106,7 +148,7 @@
   position: relative; /* Necesario para posicionar el ::after */
   text-decoration: none;
   color: white;
-  font-family: 'croissantOne';
+  font-family: "croissantOne";
   cursor: pointer;
   transition: color 0.3s ease-in-out;
 }
@@ -127,22 +169,22 @@
 }
 
 .register {
-  padding: .1rem 1rem;
+  padding: 0.1rem 1rem;
   color: white;
   background-color: rgba(114, 57, 65, 0.9);
-  border-radius: .5rem;
+  border-radius: 0.5rem;
 }
 
 .login {
-  padding: .1rem .5rem;
+  padding: 0.1rem 0.5rem;
   color: white;
   background-color: rgba(114, 57, 65, 0.9);
-  border-radius: .5rem;
+  border-radius: 0.5rem;
 }
 
 .register:hover,
 .login:hover {
-  background-color:white;
+  background-color: white;
   color: rgba(114, 57, 65, 0.9);
   transition: background-color 0.7s;
 }
@@ -159,7 +201,8 @@
 }
 
 .scroll-down-text {
-  text-shadow: 0 0 5px #212121, 0 0 5px #212121, 0 0 5px #212121, 0 0 10px #212121, 0 0 10px #212121;
+  text-shadow: 0 0 5px #212121, 0 0 5px #212121, 0 0 5px #212121,
+    0 0 10px #212121, 0 0 10px #212121;
   color: white;
 }
 
@@ -180,7 +223,7 @@
 .title {
   /*font-family: 'croissantOne';*/
   width: 100%;
-  font-family: 'justa';
+  font-family: "justa";
   font-size: 6rem;
   padding: 1rem;
   margin-top: 5rem;
@@ -191,7 +234,7 @@
 }
 
 .subtitle-menus {
-  font-family: 'croissantOne';
+  font-family: "croissantOne";
   font-size: 2rem;
   padding: 1rem;
   margin-top: 0.1rem !important;
@@ -261,10 +304,10 @@
 .footer {
   display: flex;
   background-color: rgba(114, 57, 65, 0.9);
-  padding: .5rem;
+  padding: 0.5rem;
   color: white;
-  font-family: 'croissantOne';
-  font-size: .9rem;
+  font-family: "croissantOne";
+  font-size: 0.9rem;
 }
 
 .link {
@@ -275,7 +318,8 @@
 }
 
 .link:hover {
-  text-shadow: 0 0 5px white, 0 0 5px white, 0 0 5px white, 0 0 10px white, 0 0 10px white;
+  text-shadow: 0 0 5px white, 0 0 5px white, 0 0 5px white, 0 0 10px white,
+    0 0 10px white;
   color: rgba(114, 57, 65, 0.9);
   transition: all 0.2s ease-in-out;
 }
@@ -327,6 +371,14 @@
   color: white;
 }
 
+.btn-menu-complete:hover {
+  background-color: white;
+}
+
+.btn-menu-complete:hover .btn-menu {
+  color: rgb(136, 99, 104);
+}
+
 /*CARD FLIP MENU*/
 
 .menu-container {
@@ -345,7 +397,7 @@
 }
 
 .menu-title-home {
-  font-family: 'croissantOne' !important;
+  font-family: "croissantOne" !important;
   font-size: 4rem;
   text-align: center;
   color: white;
@@ -371,7 +423,8 @@
   transform: rotateY(180deg);
 }
 
-.flip-card-front, .flip-card-back {
+.flip-card-front,
+.flip-card-back {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -380,16 +433,39 @@
 }
 
 .flip-card-front {
-  font-family: 'croissantOne';
+  font-family: "croissantOne";
   background-color: rgba(136, 99, 104, 0.5);
   color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 .flip-card-back {
-  font-family: 'croissantOne';
+  font-family: "croissantOne";
   background-color: rgba(0, 0, 0, 0.5);
   color: white;
   transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-flipcard {
+  background: none;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: 2px solid rgb(136, 99, 104);
+  border-radius: 5px;
+  transition: all 0.5s ease;
+}
+
+.btn-flipcard:hover {
+  background: rgb(136, 99, 104);
+  color: white;
+  border: 2px solid white;
 }
 
 /*TEST CART*/
@@ -506,11 +582,11 @@
   border: none;
   border-radius: 50%;
   cursor: pointer;
-  transition: background-color .5s ease;
+  transition: background-color 0.5s ease;
 }
 
 .cart-count {
-  font-family: 'croissantOne';
+  font-family: "croissantOne";
   position: absolute;
   left: 50%;
   top: 50%;
@@ -533,7 +609,7 @@
   border-top: 2px solid #ccc;
   padding: 20px;
   box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
-  transition: bottom 0.5s cubic-bezier(0.25, 1, 0.5, 1); 
+  transition: bottom 0.5s cubic-bezier(0.25, 1, 0.5, 1);
   z-index: 1000;
   min-height: 250px;
   overflow-y: auto;
@@ -547,7 +623,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'croissantOne';
+  font-family: "croissantOne";
   margin-bottom: 10px;
 }
 
@@ -577,7 +653,7 @@
 /*MENU*/
 
 .menu-title {
-  font-family: 'croissantOne' !important;
+  font-family: "croissantOne" !important;
   max-width: 200px;
   text-align: center;
 }
@@ -611,7 +687,7 @@
   opacity: 0;
 }
 
-.cards-menu:hover .toggle-btn{
+.cards-menu:hover .toggle-btn {
   transform: translateX(440%) translateY(215%);
   opacity: 1;
 }
@@ -631,13 +707,16 @@
   text-decoration: none;
   color: white;
   font-size: 1.5rem;
-  font-family: 'croissantOne';
-  text-shadow: 0 0 5px rgba(114, 57, 65, 0.9), 0 0 5px rgba(114, 57, 65, 0.9), 0 0 5px rgba(114, 57, 65, 0.9), 0 0 10px rgba(114, 57, 65, 0.9), 0 0 10px rgba(114, 57, 65, 0.9);
+  font-family: "croissantOne";
+  text-shadow: 0 0 5px rgba(114, 57, 65, 0.9), 0 0 5px rgba(114, 57, 65, 0.9),
+    0 0 5px rgba(114, 57, 65, 0.9), 0 0 10px rgba(114, 57, 65, 0.9),
+    0 0 10px rgba(114, 57, 65, 0.9);
 }
 
 .btn-info:hover {
   color: rgba(114, 57, 65, 0.9);
-  text-shadow: 0 0 5px white, 0 0 5px white, 0 0 5px white, 0 0 10px white, 0 0 10px white;
+  text-shadow: 0 0 5px white, 0 0 5px white, 0 0 5px white, 0 0 10px white,
+    0 0 10px white;
   transition: all 0.5s ease;
 }
 
@@ -648,7 +727,7 @@
 }
 
 .accordion-button {
-  font-family: 'croissantOne' !important;
+  font-family: "croissantOne" !important;
   font-size: 1.5rem !important;
   color: white !important;
   background-color: rgba(114, 57, 65, 0.9) !important;
@@ -666,12 +745,12 @@
 /* LOGINS */
 
 .container-login-header {
-  font-family: 'croissantOne' !important;
+  font-family: "croissantOne" !important;
   color: white;
 }
 
 .login-form {
-  font-family: 'croissantOne' !important;
+  font-family: "croissantOne" !important;
   color: white;
   display: flex;
   flex-direction: column;
