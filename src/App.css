@@ -233,6 +233,18 @@
   text-align: center;
 }
 
+.products-orders {
+  font-family: "croissantOne";
+  font-size: 2rem;
+  padding: 1rem;
+  margin-top: 0.1rem !important;
+  margin-bottom: 0.1rem !important;
+  background-color: rgba(114, 57, 65, 0.9);
+  border: 1px solid white;
+  color: white;
+  text-align: center;
+}
+
 .subtitle-menus {
   font-family: "croissantOne";
   font-size: 2rem;
@@ -764,4 +776,71 @@
   background-color: rgba(114, 57, 65, 0.9);
   padding: 5rem;
   border: 1px solid white;
+}
+
+/* RESERVAS Y AGENDA */
+
+.container-reserva {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  background-color: rgba(114, 57, 65, 0.9);
+  border-bottom: #212121 1px solid;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5) inset,
+   0 8px 24px 0 rgba(0,0,0,0.3) inset;
+}
+
+.calendar-container {
+  display: flex;
+  gap: 1rem; /* Espacio entre los dos bloques */
+  width: 100%;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.reserva {
+  flex: 0 0 40%;
+  background-color: #f9f9f9;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.calendar-wrapper {
+  flex: 1;
+}
+
+.title-reserva {
+  font-family: "croissantOne" !important;
+  color: white;
+  font-size: 3rem;
+}
+
+.fc-daygrid-day-frame {
+  cursor: pointer;
+  background-color: #212121;
+  transition: background-color 0.5s ease;
+}
+
+.fc-toolbar-title {
+  color: white !important;
+}
+
+.fc-daygrid-day:hover .fc-daygrid-day-frame {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.fc-col-header-cell-cushion {
+  font-family: "croissantOne" !important;
+  color: black !important;
+  text-decoration: none !important;
+}
+
+.fc-daygrid-day-number {
+  font-family: "croissantOne" !important;
+  color: white !important;
+  text-decoration: none !important;
+
 }

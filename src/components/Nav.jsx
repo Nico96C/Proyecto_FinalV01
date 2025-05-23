@@ -39,7 +39,7 @@ function Nav() {
             <a className="nav-links" href="#menu">MENU</a>
           </li>
           <li className="nav-element">
-            <a className="nav-links" href="#agenda">AGENDA</a>
+            <a className="nav-links" href="#reserva">RESERVA</a>
           </li>
           <li className="nav-element">
             <Link className="nav-links" to="/contact">CONTACTO</Link>

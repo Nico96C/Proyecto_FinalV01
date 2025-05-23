@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 
 import { ToastContainer, toast, Slide } from "react-toastify";
 import MarkIcon from "../public/imgs/mark";
+import Reserva from "./components/Reserva";
 
 function Home({ addCart, products }) {
   const productosA = products.filter(
@@ -169,7 +170,7 @@ function Home({ addCart, products }) {
           </div>
         </div>
 
-        <h1> LO MAS POPULAR EN PEDIDOS </h1>
+        <h1 className="products-orders"> LO MAS POPULAR EN PEDIDOS </h1>
         <div className="container-products">
           <div className="products">
             <h2 className="subtitle-menus">Entrantes</h2>
@@ -268,6 +269,8 @@ function Home({ addCart, products }) {
             Ver Menu Completo
           </Link>
         </div>
+
+        <Reserva />
       </main>
 
 
