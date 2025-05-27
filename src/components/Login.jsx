@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import "../App.css";
 import { useState } from "react";
 import { useAuthContext } from "../contexts/AuthContext";
-import { createUser, auth } from "../Auth/Firebase";
+import { createUser, auth } from "../Auth/FirebaseConfig";
 import { signInWithEmailAndPassword } from "firebase/auth";
 
 function Login() {
