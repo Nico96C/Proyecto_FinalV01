@@ -1,7 +1,11 @@
 import { useParams, Link } from "react-router-dom";
+import { useCartContext } from "../contexts/CartContext";
+import { useProducts } from "../contexts/ProductsContext";
 
+function DetallesProducto() {
+  const { agregarAlCarrito } = useCartContext();
+  const { products } = useProducts();
 
-function DetallesProducto({ products, addCart }) {
   const { id } = useParams();
   const producto = products.find((item) => parseInt(item.id) === parseInt(id));
 
@@ -15,7 +19,10 @@ function DetallesProducto({ products, addCart }) {
         <h2>{producto.name}</h2>
         <p>{producto.description}</p>
         <p>Precio: ${producto.price}</p>
-        <button className="btn btn-primary" onClick={() => addCart(producto)}>
+        <button
+          className="btn btn-primary"
+          onClick={() => agregarAlCarrito(producto)}
+        >
           Agregar al carrito
         </button>
       </div>

@@ -1,6 +1,9 @@
 import { ToastContainer, toast, Slide } from "react-toastify";
+import { useCartContext } from "../contexts/CartContext";
 
-function CartView({ cartItems, deleteFromCart, clearCart }) {
+function CartView() {
+
+  const { limpiarCarrito, eliminarDelCarrito, cartItems } = useCartContext();
 
   const notify = () => {
     toast.dismiss();
@@ -22,7 +25,7 @@ function CartView({ cartItems, deleteFromCart, clearCart }) {
     <div className="cart-view">
       <div className="cart-header">
         <h1>Lista de Pedidos</h1>
-        <button className="btn btn-danger" onClick={clearCart}>
+        <button className="btn btn-danger" onClick={limpiarCarrito}>
           Vaciar carrito
         </button>
       </div>
@@ -39,7 +42,7 @@ function CartView({ cartItems, deleteFromCart, clearCart }) {
                   <p className="card-text">${item.price}</p>
                   <button
                     className="btn btn-danger"
-                    onClick={() => { deleteFromCart(item.id); notify(); }}
+                    onClick={() => { eliminarDelCarrito(item.id); notify(); }}
                   >
                     Eliminar
                   </button>

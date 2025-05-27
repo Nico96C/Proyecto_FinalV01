@@ -5,12 +5,19 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import resto3 from "/imgs/carousel/3.jpg";
 import Footer from "./components/Footer";
 import { Link } from "react-router-dom";
-
 import { ToastContainer, toast, Slide } from "react-toastify";
 import MarkIcon from "../public/imgs/mark";
 import Reserva from "./components/Reserva";
+import loadingScreen from "/imgs/loading.png";
+import { useCartContext } from "./contexts/CartContext";
+import { useProducts } from "./contexts/ProductsContext";
 
-function Home({ addCart, products }) {
+function Home() {
+
+  const { agregarAlCarrito } = useCartContext();
+  const { products } = useProducts();
+  const { loading, loadingPercent } = useProducts();
+
   const productosA = products.filter(
     (producto) => producto.category === "Entrante"
   );
@@ -22,6 +29,20 @@ function Home({ addCart, products }) {
   const productosC = products.filter(
     (producto) => producto.category === "Postre"
   );
+
+  if (loading) {
+    return (
+      <div className="loading-screen">
+        <img
+          src={loadingScreen}
+          className="loading-img"
+          width={100}
+          height={100}
+        />
+        <p className="loading-percent">{loadingPercent} %</p>
+      </div>
+    );
+  }
 
   const notify = () => {
     toast.dismiss();
@@ -188,7 +209,7 @@ function Home({ addCart, products }) {
                 <button
                   className="btn-buy"
                   onClick={() => {
-                    addCart(producto);
+                    agregarAlCarrito(producto);
                     notify();
                   }}
                 >
@@ -214,7 +235,7 @@ function Home({ addCart, products }) {
                 <button
                   className="btn-buy"
                   onClick={() => {
-                    addCart(producto);
+                    agregarAlCarrito(producto);
                     notify();
                   }}
                 >
@@ -240,7 +261,7 @@ function Home({ addCart, products }) {
                 <button
                   className="btn-buy"
                   onClick={() => {
-                    addCart(producto);
+                    agregarAlCarrito(producto);
                     notify();
                   }}
                 >

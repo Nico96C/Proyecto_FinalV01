@@ -130,18 +130,11 @@
   flex-direction: column;
   align-items: center;
   position: fixed;
-  right: -30%;
-  top: 0;
+  right: -20%;
+  top: 5px;
   gap: 0.2rem;
   padding: 0.1rem 1rem;
   text-decoration: none;
-}
-
-.nav-element-login a {
-  text-decoration: none;
-  color: white;
-  font-family: "croissantOne";
-  transition: color 0.3s ease-in-out;
 }
 
 .nav-links {
@@ -168,18 +161,14 @@
   width: 100%;
 }
 
-.register {
-  padding: 0.1rem 1rem;
-  color: white;
-  background-color: rgba(114, 57, 65, 0.9);
-  border-radius: 0.5rem;
-}
-
 .login {
   padding: 0.1rem 0.5rem;
   color: white;
   background-color: rgba(114, 57, 65, 0.9);
   border-radius: 0.5rem;
+  text-decoration: none;
+  font-family: "croissantOne";
+  transition: color 0.3s ease-in-out;
 }
 
 .register:hover,
@@ -810,6 +799,7 @@
 
 .calendar-wrapper {
   flex: 1;
+  z-index: 0 !important;
 }
 
 .title-reserva {

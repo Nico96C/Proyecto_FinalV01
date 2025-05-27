@@ -1,7 +1,13 @@
 import { Link } from "react-router-dom";
 import "../App.css";
+import { useCartContext } from "../contexts/CartContext";
+import { useProducts } from "../contexts/ProductsContext";
 
-function Menu({ addCart, products }) {
+function Menu() {
+
+  const { agregarAlCarrito } = useCartContext();
+  const { products } = useProducts();
+
   const arrayProductos = products;
 
   const productosA = arrayProductos.filter(
@@ -56,7 +62,7 @@ function Menu({ addCart, products }) {
                     <button
                       id={producto.id}
                       className="btn-buy-2"
-                      onClick={() => addCart(producto)}
+                      onClick={() => agregarAlCarrito(producto)}
                     >
                       Agregar Pedido
                     </button>
@@ -103,7 +109,7 @@ function Menu({ addCart, products }) {
                     <button
                       id={producto.id}
                       className="btn-buy-2"
-                      onClick={() => addCart(producto)}
+                      onClick={() => agregarAlCarrito(producto)}
                     >
                       Agregar Pedido
                     </button>
@@ -150,7 +156,7 @@ function Menu({ addCart, products }) {
                     <button
                       id={producto.id}
                       className="btn-buy-2"
-                      onClick={() => addCart(producto)}
+                      onClick={() => agregarAlCarrito(producto)}
                     >
                       Agregar Pedido
                     </button>
