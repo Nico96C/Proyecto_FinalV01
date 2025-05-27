@@ -2,9 +2,8 @@ import { useNavigate } from "react-router-dom";
 import "../App.css";
 import { useState } from "react";
 import { useAuthContext } from "../contexts/AuthContext";
-import { createUser } from "../Auth/Firebase";
+import { createUser, auth } from "../Auth/Firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../Auth/Firebase";
 
 function Login() {
   const [username, setUsername] = useState("");
