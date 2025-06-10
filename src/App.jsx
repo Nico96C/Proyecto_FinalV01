@@ -6,6 +6,8 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
+import { ToastContainer, Slide } from "react-toastify";
+import Admin from "./components/Admin";
 import Contact from "./components/Contact";
 import Home from "./Home";
 import Nav from "./components/Nav";
@@ -17,12 +19,12 @@ import cartIcon from "/imgs/cart.png";
 import Login from "./components/Login";
 import { useAuthContext } from "./contexts/AuthContext";
 import { useCartContext } from "./contexts/CartContext";
+import FormEdit from "./components/FormEdit";
 
 function App() {
-
-  const { user } = useAuthContext();
+  const { user, admin } = useAuthContext();
   const { cartItems } = useCartContext();
-  
+
   const [visualCart, setVisualCart] = useState(false);
   /* ESTADOS */
 
@@ -31,40 +33,35 @@ function App() {
   };
   /*Funciones Carrito que iran al Contexto*/
 
-
   return (
     <Router className="App">
       <div className="nav-order">
         <Nav />
       </div>
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss={false}
+        draggable
+        pauseOnHover
+        theme="light"
+        transition={Slide}
+      />
       <Routes>
-        <Route
-          path="/"
-          element={
-            <Home cartItems={cartItems} />
-          }
-        />
+        <Route path="/" element={<Home cartItems={cartItems} />} />
 
-        <Route
-          path="/menu"
-          element={<Menu />}
-        />
-        <Route
-          path="/menu/:id"
-          element={<Details />}
-        />
+        <Route path="/menu" element={<Menu />} />
+        <Route path="/menu/:id" element={<Details />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/about" element={<About />} />
-        <Route
-          path="/login"
-          element={
-            <Login />
-          }
-        />
-        {/*<Route
-          path="/admin"
-          element={ ? <Admin /> : <Navigate to={"/login"} replace />}
-        />*/}
+        <Route path="/login" element={<Login />} />
+        {admin ? <Route path="/admin" element={<Admin />} /> : <Route path="/admin" element={<Navigate to="/login" />} />}
+        {admin && <Route path="/admin/editar" element={<FormEdit />} />}
+        {admin && <Route path="/admin/editar/:id" element={<FormEdit />} />}
       </Routes>
 
       {/* Botón de carrito global */}
@@ -81,9 +78,7 @@ function App() {
           <button className="close-cart-btn" onClick={handleCartClick}>
             &times;
           </button>
-          <CartView
-            cartItems={cartItems}
-          />
+          <CartView cartItems={cartItems} />
         </div>
       ) : (
         <div className={`cart-modal ${visualCart ? "show" : ""}`}>

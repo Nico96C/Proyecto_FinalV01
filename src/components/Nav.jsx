@@ -4,12 +4,15 @@ import { useAuthContext } from "../contexts/AuthContext";
 import { useProducts } from "../contexts/ProductsContext";
 import loadingScreen from "/imgs/loading.png";
 
+import loginLogo from "/imgs/login.png";
+import logoutLogo from "/imgs/Logout.png";
+
 function Nav() {
 
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
 
-  const { user, logout } = useAuthContext();
+  const { user, logout, admin } = useAuthContext();
   const { loading, loadingPercent } = useProducts();
 
   useEffect(() => {
@@ -77,17 +80,23 @@ function Nav() {
               CONTACTO
             </Link>
           </li>
+          {admin && <li className="nav-element">
+            <Link className="nav-links" to="/admin">
+              ADMIN
+            </Link>
+          </li>}
           <li className="nav-element-login">
             { user ? (
               <button className="login" onClick={logout}>
-                CERRAR SESIÓN
+                <img src={logoutLogo} alt="Cerrar Sessión" width={30} height={30}/>
+                Logout
               </button>
             ) : (
               <Link className="login" to="/login">
-                 REGISTRO
+                 <img src={loginLogo} alt="Iniciar Sessión" width={30} height={30}/>
+                 Login
               </Link>
             )}
-            
           </li>
         </ul>
       </nav>

@@ -1,44 +1,71 @@
-import { useNavigate } from "react-router-dom";
 import "../App.css";
 import { useState } from "react";
 import { useAuthContext } from "../contexts/AuthContext";
-import { createUser, auth } from "../Auth/FirebaseConfig";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { createUser, loginEmailPass } from "../Auth/FirebaseConfig";
+import { toast, Slide } from "react-toastify";
 
 function Login() {
+  const [registerName, setRegisterName] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
   const [showRegister, setShowRegister] = useState(false);
   const { user, login, logout } = useAuthContext();
-  const navigate = useNavigate();
 
-  // Login local (admin) o con Firebase
+  const notify1 = () => {
+    toast.dismiss();
+    toast.success("Sessión Iniciada", {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Slide,
+    });
+  };
+
+  const notify2 = () => {
+    toast.dismiss();
+    toast.error("Sessión Cerrada", {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Slide,
+    });
+  };
+
+  // Login con Firebase
+  // Adaptada: retorna la promesa para poder usar await y catch en Login.jsx
+  function LoginWithEmailPass(e) {
+    e.preventDefault();
+    loginEmailPass(username, password)
+      .then(() => {
+        login(username);
+        notify1();
+        setUsername("");
+        setPassword("");
+      })
+      .catch(() => {
+        setErrorMsg("Credenciales incorrectas o usuario no registrado");
+      });
+  }
+
+  // Login
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrorMsg("");
-
-    if (username === "admin" && password === "1234") {
-      login(username);
-      setUsername("");
-      setPassword("");
-      alert("Bienvenido Admin!");
-      navigate("/");
+    if (username) {
+      LoginWithEmailPass(e);
+      console.log("Login con Firebase");
       return;
-    }
-
-    try {
-      const userCredential = await signInWithEmailAndPassword(
-        auth,
-        username,
-        password
-      );
-      login(userCredential.user.email);
-      setUsername("");
-      setPassword("");
-      navigate("/");
-    } catch (error) {
-      setErrorMsg("Credenciales incorrectas o usuario no registrado.", error.message);
     }
   };
 
@@ -47,21 +74,21 @@ function Login() {
     e.preventDefault();
     setErrorMsg("");
     try {
-      await createUser(username, password);
+      await createUser(username, password, registerName);
       login(username);
       setUsername("");
       setPassword("");
-      alert("Usuario registrado correctamente");
-      navigate("/");
     } catch (error) {
-      setErrorMsg("Error al registrar usuario: " + (error.message || ""));
+      setErrorMsg("Error al registrar usuario" + error.name);
     }
   };
 
   // Logout
   const handleLogout = () => {
     logout();
-    alert("Sesión cerrada");
+    setUsername("");
+    setPassword("");
+    notify2();
   };
 
   return (
@@ -76,7 +103,7 @@ function Login() {
       </div>
       {user ? (
         <>
-          <p>Bienvenido {user}!</p>
+          <p>Bienvenido {user.displayName}!</p>
           <p>Ya puedes acceder a todas las opciones.</p>
           <button onClick={handleLogout}>Cerrar Sesión</button>
         </>
@@ -84,7 +111,7 @@ function Login() {
         <div>
           {!showRegister ? (
             <form className="login-form" onSubmit={handleSubmit}>
-              <label>Email o Usuario</label>
+              <label>Email</label>
               <input
                 type="text"
                 name="username"
@@ -101,7 +128,6 @@ function Login() {
                 placeholder="contraseña..."
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                autoComplete="current-password"
               />
               <br />
               <button type="submit">Login</button>
@@ -109,6 +135,14 @@ function Login() {
             </form>
           ) : (
             <form className="login-form" onSubmit={handleRegister}>
+              <label>User</label>
+              <input
+                type="text"
+                placeholder="Nombre"
+                value={registerName}
+                onChange={(e) => setRegisterName(e.target.value)}
+              />
+              <br />
               <label>Email</label>
               <input
                 type="email"

@@ -1,4 +1,4 @@
-import { ToastContainer, toast, Slide } from "react-toastify";
+import { toast, Slide } from "react-toastify";
 import { useCartContext } from "../contexts/CartContext";
 
 function CartView() {
@@ -49,19 +49,6 @@ function CartView() {
                 </div>
               </div>
             ))}
-            <ToastContainer
-            position="top-right"
-            autoClose={3000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss={false}
-            draggable
-            pauseOnHover
-            theme="light"
-            transition={Slide}
-          />
           </div>
         )}
       </div>

@@ -8,6 +8,26 @@ export const ProductsProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [loadingPercent, setLoadingPercent] = useState(0);
 
+  const fetchProducts = () => {
+  setLoading(true);
+  fetch("https://682219c0b342dce8004d1dd0.mockapi.io/SevApi/productos")
+    .then((res) => {
+      if (!res.ok) {
+        throw new Error(`HTTP error! status: ${res.status}`);
+      }
+      return res.json();
+    })
+    .then((data) => {
+      setProducts(data);
+      setLoading(false);
+    })
+    .catch((error) => {
+      console.error("Error de API al cargar productos:", error);
+      setProducts([]);
+      setLoading(false);
+    });
+};
+
   useEffect(() => {
     setLoading(true);
     setLoadingPercent(0);
@@ -27,21 +47,7 @@ export const ProductsProvider = ({ children }) => {
         clearInterval(percentInterval);
     }, 2500);
 
-    // Llamada a la API
-    fetch("https://682219c0b342dce8004d1dd0.mockapi.io/SevApi/productos")
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error(`HTTP error! status: ${res.status}`);
-        }
-        return res.json();
-      })
-      .then((data) => {
-        setProducts(data);
-      })
-      .catch((error) => {
-        console.error("Error de API al cargar productos:", error);
-        setProducts([]);
-      });
+    fetchProducts();
 
     // Cleanup function
     return () => {
@@ -50,10 +56,15 @@ export const ProductsProvider = ({ children }) => {
     };
   }, []);
 
+  const reloadProducts = () => {
+  fetchProducts();
+};
+
   const contextValue = {
     products,
     loading,
     loadingPercent,
+    reloadProducts
   };
 
   return (

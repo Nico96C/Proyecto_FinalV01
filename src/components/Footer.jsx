@@ -5,11 +5,11 @@ function Footer() {
         <p>&copy; 2025 My Website. Talento Tech ~ React.</p>
         <p>
           Follow us on{' '}
-          <a href="www.linkedin.com/in/nicolás-andres-cuello" className="link">
+          <a href="https://linkedin.com/in/nicolás-andres-cuello" className="link" target="_blank">
             LinkedIn
           </a>{' '}
           and{' '}
-          <a href="https://github.com/Nico96C" className="link">
+          <a href="https://github.com/Nico96C" className="link" target="_blank">
             GitHub
           </a>
         </p>

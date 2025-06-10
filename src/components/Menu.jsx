@@ -22,6 +22,10 @@ function Menu() {
     (producto) => producto.category === "Postre"
   );
 
+  const productosD = arrayProductos.filter(
+    (producto) => producto.category === "Bebida"
+  );
+
   return (
     <div className="container" style={{ justifyContent: "unset", alignItems: "unset", padding: "0" }}>
       <h1 className="title" id="menu">
@@ -76,6 +80,7 @@ function Menu() {
               </div>
             </div>
           </div>
+
           <div className="accordion-item">
             <h2 className="accordion-header">
               <button
@@ -123,6 +128,7 @@ function Menu() {
               </div>
             </div>
           </div>
+
           <div className="accordion-item">
             <h2 className="accordion-header">
               <button
@@ -170,6 +176,55 @@ function Menu() {
               </div>
             </div>
           </div>
+
+          <div className="accordion-item">
+            <h2 className="accordion-header">
+              <button
+                className="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseFour"
+                aria-expanded="false"
+                aria-controls="collapseFour"
+              >
+                Bebidas
+              </button>
+            </h2>
+            <div
+              id="collapseFour"
+              className="accordion-collapse collapse"
+              data-bs-parent="#accordionExample"
+            >
+              <div className="accordion-body">
+                {productosD.map((producto) => (
+                  <div key={producto.id} className={`cards-menu`}>
+                      <img
+                        src={producto.img}
+                        alt={producto.name}
+                        className="img-card-product"
+                      />
+                    <h5 className="menu-title">{producto.name}</h5>
+                    <p className="limited-text">{producto.description}</p>
+                    <p> € {producto.price}</p>
+                    <div className="btn-space"></div>
+                    <button
+                      id={producto.id}
+                      className="btn-buy-2"
+                      onClick={() => agregarAlCarrito(producto)}
+                    >
+                      Agregar Pedido
+                    </button>
+                    <button
+                      className="toggle-btn"
+                    >
+                      <Link to={`/menu/${producto.id}`} className="btn-info">Info</Link>
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>

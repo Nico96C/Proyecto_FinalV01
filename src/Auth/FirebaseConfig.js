@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_APP_API_KEY,
@@ -16,6 +16,36 @@ const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 
 // Adaptada: retorna la promesa para poder usar await y catch en Login.jsx
-export function createUser(email, password) {
-  return createUserWithEmailAndPassword(auth, email, password);
+export async function createUser(email, password, displayName = "") {
+  try {
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+    const user = userCredential.user;
+    if (displayName) {
+      await updateProfile(user, { displayName });
+    }
+    return user;
+  } catch (error) {
+    console.error("Error al crear usuario:", error.code, error.message);
+    throw error;
+  }
+}
+
+export function loginEmailPass(email, password) {
+  return(
+    new Promise((resolve, reject) => {
+      signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Inicio de sesión exitoso
+        console.log("Credenciales:", userCredential);
+        const user = userCredential.user;
+        console.log("Usuario autenticado:", user);
+        resolve(user);
+      })
+      .catch((error) => {
+        // Manejo de errores
+        console.error("Error al iniciar sesión:", error.code);
+        reject(error);
+      });
+    })
+  )
 }

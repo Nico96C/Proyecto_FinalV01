@@ -5,7 +5,7 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import resto3 from "/imgs/carousel/3.jpg";
 import Footer from "./components/Footer";
 import { Link } from "react-router-dom";
-import { ToastContainer, toast, Slide } from "react-toastify";
+import { toast, Slide } from "react-toastify";
 import MarkIcon from "../public/imgs/mark";
 import Reserva from "./components/Reserva";
 import loadingScreen from "/imgs/loading.png";
@@ -28,6 +28,10 @@ function Home() {
 
   const productosC = products.filter(
     (producto) => producto.category === "Postre"
+  );
+
+  const productosD = products.filter(
+    (producto) => producto.category === "Bebida"
   );
 
   if (loading) {
@@ -187,6 +191,20 @@ function Home() {
                   </div>
                 </div>
               </div>
+              <div className="flip-card">
+                <div className="flip-card-inner">
+                  <div className="flip-card-front">
+                    <MarkIcon width={50} height={80} />
+                    <h1> BEBIDAS </h1>
+                    <p> Las bebidas mas disfrutables, desde los mejores vinos hasta el agua mas fresca </p>
+                  </div>
+                  <div className="flip-card-back">
+                    <button className="btn-flipcard">
+                      Descargar
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -271,19 +289,31 @@ function Home() {
             ))}
           </div>
 
-          <ToastContainer
-            position="top-right"
-            autoClose={3000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss={false}
-            draggable
-            pauseOnHover
-            theme="light"
-            transition={Slide}
-          />
+          <div className="products">
+            <h2 className="subtitle-menus">Bebidas</h2>
+            {productosD.slice(0, 4).map((producto) => (
+              <div key={producto.id} className="cards">
+                <img
+                  className="img-card-product-home"
+                  src={producto.img}
+                  alt={producto.title}
+                />
+                <h5>{producto.name}</h5>
+                <p className="limited-text">{producto.description}</p>
+                <p> € {producto.price}</p>
+                <div className="btn-space"></div>
+                <button
+                  className="btn-buy"
+                  onClick={() => {
+                    agregarAlCarrito(producto);
+                    notify();
+                  }}
+                >
+                  Agregar al carrito
+                </button>
+              </div>
+            ))}
+          </div>
         </div>
         <div className="btn-menu-complete">
           <Link to="/menu" className="btn-menu">
