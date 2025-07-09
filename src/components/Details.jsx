@@ -16,27 +16,28 @@ function DetallesProducto() {
   }
 
   return (
-    <div className="container">
-      <div className="detalles-producto">
+    <div className="detail-container">
+      <div className="detail-producto">
         <h2>{producto.name}</h2>
+        <img src={producto.img} width={400} height={250} />
         <p>{producto.description}</p>
         <p>Precio: ${producto.price}</p>
         {admin ? (
           <button
-            className="btn btn-primary"
+            className="btn-details"
           >
-            <Link to={`/admin/editar/${id}`}> Editar Producto </Link>
+            <Link className="edit-details" to={`/admin/editar/${id}`}> Editar Producto </Link>
           </button>
         ) : (
           <button
-            className="btn btn-primary"
+            className="btn-details"
             onClick={() => agregarAlCarrito(producto)}
           >
             Agregar al carrito
           </button>
         )}
       </div>
-      <Link to="/menu" className="btn">
+      <Link to="/menu" className="btn-back">
         Volver al Menu
       </Link>
     </div>

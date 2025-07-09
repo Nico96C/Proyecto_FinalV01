@@ -9,7 +9,7 @@ function HeadTop() {
 
       <div></div>
       <div className="logo-center">
-        <img src={Logo} alt="Logo-Restaurant" width={500} height={450} />
+        <img src={Logo} alt="Logo-Restaurant" className="logo-img" />
       </div>
       <div className="scroll-down">
         <h5 className="scroll-down-text">Desliza hacia abajo</h5>

@@ -43,12 +43,11 @@ function Login() {
   };
 
   // Login con Firebase
-  // Adaptada: retorna la promesa para poder usar await y catch en Login.jsx
   function LoginWithEmailPass(e) {
     e.preventDefault();
     loginEmailPass(username, password)
-      .then(() => {
-        login(username);
+      .then((userData) => {
+        login(userData); // Pasa el objeto completo
         notify1();
         setUsername("");
         setPassword("");
@@ -92,24 +91,26 @@ function Login() {
   };
 
   return (
-    <div className="container" style={{ justifyContent: "space-evenly" }}>
-      <div className="container-login-header">
-        <h1>{showRegister ? "Registro" : "Login"}</h1>
-        <p>
-          {showRegister
-            ? "Crea tu cuenta para acceder a todas las opciones."
-            : "Inicia sesión para acceder a tu cuenta."}
-        </p>
-      </div>
+    <div className="container-login">
+
       {user ? (
         <>
-          <p>Bienvenido {user.displayName}!</p>
+          <p>Bienvenido {user.displayName || user.email}!</p>
           <p>Ya puedes acceder a todas las opciones.</p>
           <button onClick={handleLogout}>Cerrar Sesión</button>
         </>
       ) : (
         <div>
+          <div className="container-login-header">
+            <h1>{showRegister ? "Registro" : "Login"}</h1>
+            <p>
+              {showRegister
+                ? "Crea tu cuenta para acceder a todas las opciones."
+                : "Inicia sesión para acceder a tu cuenta."}
+            </p>
+          </div>
           {!showRegister ? (
+
             <form className="login-form" onSubmit={handleSubmit}>
               <label>Email</label>
               <input

@@ -7,26 +7,25 @@ export function AuthProvider({ children }) {
   const [admin, setAdmin] = useState(false);
 
   useEffect(() => {
-    const token = localStorage.getItem("authToken");
-    const isAdmin = localStorage.getItem("admin") === "true";
-    if (token) {
-      const username = token.replace("fake-token-", "");
-      setUser(username);
-      setAdmin(isAdmin);
-    }
-  }, []);
+  const userData = localStorage.getItem("userData");
+  const isAdmin = localStorage.getItem("admin") === "true";
+  if (userData) {
+    setUser(JSON.parse(userData));
+    setAdmin(isAdmin);
+  }
+}, []);
 
-  const login = (username) => {
-    const token = `fake-token-${username}`;
-    if (username === "admin@gmail.com") {
-      //contra admin123
-      setAdmin(true);
-      console.log("Admin soy");
-      localStorage.setItem("admin", true);
-    }
-    localStorage.setItem("authToken", token);
-    setUser(username);
-  };
+  const login = (userData) => {
+  if (userData.email === "admin@gmail.com") {
+    setAdmin(true);
+    localStorage.setItem("admin", true);
+  } else {
+    setAdmin(false);
+    localStorage.setItem("admin", false);
+  }
+  localStorage.setItem("userData", JSON.stringify(userData));
+  setUser(userData);
+};
 
   const logout = () => {
     localStorage.removeItem("authToken");

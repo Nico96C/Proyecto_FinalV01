@@ -5,19 +5,23 @@ function Contact() {
     <>
       <div className="fullscreen-container">
         <div className="contact">
-          <h2>Contact Us</h2>
-          <p>If you have any questions, feel free to reach out!</p>
-          <form>
-            <label htmlFor="name">Name:</label>
-            <input type="text" id="name" name="name" required />
+          <h2> Contactanos </h2>
+          <p>Si tienes algun tipo de consulta, escribenos y te ayudaremos!</p>
+          <form className="formContact">
+            <div className="mb-3">
+              <label htmlFor="formGroupExampleInput" className="form-label">Nombre Completo</label>
+              <input type="text" className="form-control" id="formGroupExampleInput" placeholder="Nombre..." required />
+            </div>
 
-            <label htmlFor="email">Email:</label>
-            <input type="email" id="email" name="email" required />
+            <div className="mb-3">
+              <label htmlFor="formGroupExampleInput2" className="form-label">Mail de Contacto</label>
+              <input type="email" className="form-control" id="formGroupExampleInput2" placeholder="Mail Contacto..." required />
+            </div>
 
-            <label htmlFor="message">Message:</label>
-            <textarea id="message" name="message" required></textarea>
+            <label htmlFor="floatingTextarea"> Comentario </label>
+            <textarea className="form-control" placeholder="Deja aqui tu comentario..." id="floatingTextarea"></textarea>
 
-            <button type="submit">Send</button>
+            <button type="submit" className="default-btn">Enviar</button>
           </form>
         </div>
       </div>

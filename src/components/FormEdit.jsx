@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { editarProducto, todosLosProductos } from "../assets/request";
 import { useParams } from "react-router-dom";
 import { useProducts } from "../contexts/ProductsContext";
-import { toast, Slide } from "react-toastify";
+import { toast } from "react-toastify";
 
 function FormEdit() {
   const { id } = useParams();
@@ -10,21 +10,6 @@ function FormEdit() {
   const { reloadProducts } = useProducts();
 
   const Productos = todosLosProductos();
-
-  const notify = () => {
-    toast.dismiss();
-    toast.success("Producto modificado correctamente!", {
-      position: "top-right",
-      autoClose: 3000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: false,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-      transition: Slide,
-    });
-  };
 
   useEffect(() => {
     if (Productos) {
@@ -92,7 +77,7 @@ function FormEdit() {
             category: "",
           });
           reloadProducts();
-          notify();
+          toast.success("¡Producto Modificado con exito!");
         })
         .catch((error) => {
           console.error("Error al modificar el producto:", error);

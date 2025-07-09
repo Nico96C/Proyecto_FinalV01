@@ -1,67 +1,40 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import FormProducts from "./FormProducts";
-import { Link } from "react-router-dom";
-import { todosLosProductos } from "../assets/request";
+import ModalSelect from "./ModalSelect";
+import { MdLibraryAdd, MdOutlineSystemUpdateAlt } from "react-icons/md";
+import { TiDeleteOutline } from "react-icons/ti";
+import ModalDelete from "./ModalDelete";
 
 export default function Admin() {
   const [modal, setModal] = useState(null);
 
-  const closeModal = () => setModal(null);
-
-  useEffect(() => {
-    // Fetch products when the component mounts
-    const fetchProducts = async () => {
-      try {
-        const response = await todosLosProductos();
-        setProductos(response);
-      } catch (error) {
-        console.error("Error fetching products:", error);
-      }
-    };
-
-    fetchProducts();
-  }, []);
-
-  const [productos, setProductos] = useState([]);
-
   return (
-    <div className="container">
-      <h1>Admin</h1>
-      <p>Bienvenido al panel de administración.</p>
-      <button onClick={() => setModal("agregar")}>Agregar Producto</button>
-      <button onClick={() => setModal("eliminar")}>Eliminar Producto</button>
-      <button onClick={() => setModal("modificar")}>Modificar Producto</button>
-      <button onClick={() => setModal("pedidos")}>Ver Pedidos</button>
-
-      {/* Modal */}
-      {modal && (
-        <div className="modal-bg">
-          <div className="modal-content">
-            <button className="close-modal" onClick={closeModal}>
-              &times;
-            </button>
-            {modal === "agregar" && <FormProducts onClose={closeModal} />}
-            {modal === "eliminar" && <div>Formulario Eliminar Producto</div>}
-            {modal === "modificar" && (
-              <>
-                <div>Formulario Modificar Producto</div>
-                <h2> Seleccione producto a modificar </h2>
-                <ul>
-                  {productos &&
-                    productos.map((producto) => (
-                      <li key={producto.id}>
-                        <Link to={`/admin/editar/${producto.id}`}>
-                          {producto.name}
-                        </Link>
-                      </li>
-                    ))}
-                </ul>
-              </>
-            )}
-            {modal === "pedidos" && <div>Listado de Pedidos</div>}
-          </div>
+    <div className="container-admin">
+      <div className="admin-control-panel">
+        <div>
+          <h1>Admin</h1>
+          <p>Bienvenido al panel de administración.</p>
         </div>
-      )}
+        <button className="Admin-btn" onClick={() => setModal("agregar")}>
+          <MdLibraryAdd /> Agregar Producto
+        </button>
+        <button className="Admin-btn" onClick={() => setModal("eliminar")}>
+          <TiDeleteOutline /> Eliminar Producto
+        </button>
+        <button className="Admin-btn" onClick={() => setModal("modificar")}>
+          <MdOutlineSystemUpdateAlt /> Modificar Producto
+        </button>
+        <button className="Admin-btn" onClick={() => setModal("pedidos")}>Ver Pedidos</button>
+      </div>
+      <div className="panel-bg">
+        <div className="panel-content">
+          {modal === null && <div className="panel-placeholder">Selecciona una opción para comenzar.</div>}
+          {modal === "agregar" && <FormProducts />}
+          {modal === "eliminar" && <ModalDelete />}
+          {modal === "modificar" && <ModalSelect />}
+          {modal === "pedidos" && <div>Listado de Pedidos</div>}
+        </div>
+      </div>
     </div>
   );
 }

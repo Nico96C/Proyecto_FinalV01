@@ -9,24 +9,24 @@ export const ProductsProvider = ({ children }) => {
   const [loadingPercent, setLoadingPercent] = useState(0);
 
   const fetchProducts = () => {
-  setLoading(true);
-  fetch("https://682219c0b342dce8004d1dd0.mockapi.io/SevApi/productos")
-    .then((res) => {
-      if (!res.ok) {
-        throw new Error(`HTTP error! status: ${res.status}`);
-      }
-      return res.json();
-    })
-    .then((data) => {
-      setProducts(data);
-      setLoading(false);
-    })
-    .catch((error) => {
-      console.error("Error de API al cargar productos:", error);
-      setProducts([]);
-      setLoading(false);
-    });
-};
+    setLoading(true);
+    fetch("https://682219c0b342dce8004d1dd0.mockapi.io/SevApi/productos")
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}`);
+        }
+        return res.json();
+      })
+      .then((data) => {
+        setProducts(data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error de API al cargar productos:", error);
+        setProducts([]);
+        setLoading(false);
+      });
+  };
 
   useEffect(() => {
     setLoading(true);
@@ -42,9 +42,9 @@ export const ProductsProvider = ({ children }) => {
 
     // Timer para simular un tiempo mínimo de carga
     const timer = setTimeout(() => {
-        setLoading(false);
-        clearTimeout(timer);
-        clearInterval(percentInterval);
+      setLoading(false);
+      clearTimeout(timer);
+      clearInterval(percentInterval);
     }, 2500);
 
     fetchProducts();
@@ -57,8 +57,8 @@ export const ProductsProvider = ({ children }) => {
   }, []);
 
   const reloadProducts = () => {
-  fetchProducts();
-};
+    fetchProducts();
+  };
 
   const contextValue = {
     products,

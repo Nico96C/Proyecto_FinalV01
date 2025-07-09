@@ -20,6 +20,9 @@ import Login from "./components/Login";
 import { useAuthContext } from "./contexts/AuthContext";
 import { useCartContext } from "./contexts/CartContext";
 import FormEdit from "./components/FormEdit";
+import Profile from "./components/Profile";
+import Footer from "./components/Footer";
+import ScrollToTop from "./ScrollToTop";
 
 function App() {
   const { user, admin } = useAuthContext();
@@ -35,6 +38,7 @@ function App() {
 
   return (
     <Router className="App">
+      <ScrollToTop />
       <div className="nav-order">
         <Nav />
       </div>
@@ -59,6 +63,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/about" element={<About />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/profile" element={<Profile />} />
         {admin ? <Route path="/admin" element={<Admin />} /> : <Route path="/admin" element={<Navigate to="/login" />} />}
         {admin && <Route path="/admin/editar" element={<FormEdit />} />}
         {admin && <Route path="/admin/editar/:id" element={<FormEdit />} />}
@@ -71,6 +76,9 @@ function App() {
           <span className="cart-count">{cartItems.length}</span>
         )}
       </button>
+
+      {/*Footer global*/}
+      <Footer />
 
       {/* Modal de carrito accesible globalmente */}
       {user ? (
