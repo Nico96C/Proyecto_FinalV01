@@ -1,5 +1,4 @@
 import Logo from "/imgs/Logo.png";
-import Nav from "./Nav";
 
 function HeadTop() {
 

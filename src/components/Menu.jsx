@@ -52,17 +52,19 @@ function Menu() {
         </p>
       </div>
 
-      <div className="filters-menu">
-        <div>FILTROS</div>
-        <input
-          type="text"
-          placeholder="Buscar producto..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
-      </div>
+
 
       <div className="menu-seccion-container">
+
+        <div className="filters-menu">
+          <div>FILTROS</div>
+          <input
+            type="text"
+            placeholder="Buscar producto..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+        </div>
 
         <h2 className="category-menu-title">Entrantes</h2>
         <div className="cards-menu-container">

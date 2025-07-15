@@ -73,8 +73,17 @@ function Login() {
     e.preventDefault();
     setErrorMsg("");
     try {
-      await createUser(username, password, registerName);
-      login(username);
+      await createUser(username, password, registerName)
+      .then((userData) => {
+        login(userData); // Pasa el objeto completo
+        notify1();
+        setUsername("");
+        setPassword("");
+      })
+      .catch(() => {
+        setErrorMsg("Error al registrar usuario o Logeo fallido");
+      });
+
       setUsername("");
       setPassword("");
     } catch (error) {

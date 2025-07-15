@@ -73,22 +73,24 @@ function Home() {
             Restaurante La Sevillana{" "}
           </h1>
 
-          <div
-            id="carouselExampleSlidesOnly"
-            className="carousel slide"
-            data-bs-ride="carousel"
-          >
+          <div id="carouselExampleIndicators" className="carousel slide">
+            <div className="carousel-indicators">
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+            </div>
             <div className="carousel-inner">
               <div className="carousel-item active">
                 <div className="carousel-content">
                   <img
                     src="https://ik.imagekit.io/m3g4ID/Proyecto-TalentoTech/1.jpg?updatedAt=1745422071465"
                     className="d-block w-50"
-                    alt="restaurante-exterior"
+                    alt="restaurante-parrilla-2"
                   />
                   <div className="carousel-text">
-                    <h2>Texto para la primera imagen</h2>
-                    <p>Descripción adicional para la primera imagen.</p>
+                    <h2>Texto para la tercera imagen</h2>
+                    <p>Descripción adicional para la tercera imagen.</p>
                   </div>
                 </div>
               </div>
@@ -97,11 +99,11 @@ function Home() {
                   <img
                     src="https://ik.imagekit.io/m3g4ID/Proyecto-TalentoTech/2.jpg?updatedAt=1745422071727"
                     className="d-block w-50"
-                    alt="restaurante-parrilla-1"
+                    alt="restaurante-parrilla-2"
                   />
                   <div className="carousel-text">
-                    <h2>Texto para la segunda imagen</h2>
-                    <p>Descripción adicional para la segunda imagen.</p>
+                    <h2>Texto para la tercera imagen</h2>
+                    <p>Descripción adicional para la tercera imagen.</p>
                   </div>
                 </div>
               </div>
@@ -121,17 +123,25 @@ function Home() {
               <div className="carousel-item">
                 <div className="carousel-content">
                   <img
-                    src="https://ik.imagekit.io/m3g4ID/Proyecto-TalentoTech/4.jpg?updatedAt=1745422073968"
+                    src="https://ik.imagekit.io/m3g4ID/Proyecto-TalentoTech/5.jpg?updatedAt=1745423020978"
                     className="d-block w-50"
-                    alt="restaurante-cocina"
+                    alt="restaurante-parrilla-2"
                   />
                   <div className="carousel-text">
-                    <h2>Texto para la cuarta imagen</h2>
-                    <p>Descripción adicional para la cuarta imagen.</p>
+                    <h2>Texto para la tercera imagen</h2>
+                    <p>Descripción adicional para la tercera imagen.</p>
                   </div>
                 </div>
               </div>
             </div>
+            <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+              <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span className="visually-hidden">Previous</span>
+            </button>
+            <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+              <span className="carousel-control-next-icon" aria-hidden="true"></span>
+              <span className="visually-hidden">Next</span>
+            </button>
           </div>
 
           <div className="description-container">

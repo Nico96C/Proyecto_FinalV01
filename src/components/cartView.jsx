@@ -26,7 +26,7 @@ function CartView() {
       <div className="cart-header">
         <h1>Lista de Pedidos</h1>
       </div>
-      <div>
+      <div className="cart-content-empty">
         {cartItems.length === 0 ? (
           <p>El carrito está vacío.</p>
         ) : (

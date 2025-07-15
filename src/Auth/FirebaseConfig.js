@@ -42,7 +42,7 @@ export async function createUser(email, password, displayName = "") {
     if (displayName) {
       await updateProfile(user, { displayName });
     }
-    return user;
+    return userCredential;
   } catch (error) {
     console.error("Error al crear usuario:", error.code, error.message);
     throw error;

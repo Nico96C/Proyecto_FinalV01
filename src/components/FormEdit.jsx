@@ -89,65 +89,71 @@ function FormEdit() {
   };
 
   return (
-    <form onSubmit={handleSubmit2}>
-      <h2>Editar Producto</h2>
-      <div>
-        <label>Nombre:</label>
-        <input
-          type="text"
-          name="name"
-          value={productsEncontrado.name || ""}
-          onChange={handleChange}
-          required
-        />
-      </div>
-      <div>
-        <label>URL de la img</label>
-        <input
-          type="text"
-          name="img"
-          value={productsEncontrado.img || ""}
-          onChange={handleChange}
-          required
-        />
-      </div>
-      <div>
-        <label>Precio:</label>
-        <input
-          type="number"
-          name="price"
-          value={productsEncontrado.price || ""}
-          onChange={handleChange}
-          required
-          min="0"
-        />
-      </div>
-      <div>
-        <label>Descripción:</label>
-        <textarea
-          name="description"
-          value={productsEncontrado.description || ""}
-          onChange={handleChange}
-          required
-        />
-      </div>
-      <div>
-        <label>Category</label>
-        <select
-          name="category"
-          value={productsEncontrado.category || ""}
-          onChange={handleChange}
-          required
-        >
-          <option value="">Selecciona una categoría</option>
-          <option value="Entrante">Entrante</option>
-          <option value="Principal">Principal</option>
-          <option value="Postre">Postre</option>
-          <option value="Bebida">Bebida</option>
-        </select>
-      </div>
-      <button type="submit">Agregar products</button>
-    </form>
+    <div className="form-edit-container">
+      <form className="form-edit" onSubmit={handleSubmit2}>
+        <h2>Editar Producto</h2>
+        <div>
+          <label>Nombre:</label>
+          <input
+            type="text"
+            name="name"
+            value={productsEncontrado.name || ""}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div>
+          <label>URL de la img:</label>
+          <input
+            type="text"
+            name="img"
+            value={productsEncontrado.img || ""}
+            onChange={handleChange}
+            required
+          />
+          <img
+            className="img-edit-form"
+            src={productsEncontrado.img} 
+          />
+        </div>
+        <div>
+          <label>Precio:</label>
+          <input
+            type="number"
+            name="price"
+            value={productsEncontrado.price || ""}
+            onChange={handleChange}
+            required
+            min="0"
+          />
+        </div>
+        <div>
+          <label>Descripción:</label>
+          <textarea
+            name="description"
+            value={productsEncontrado.description || ""}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div>
+          <label>Category:</label>
+          <select
+            name="category"
+            value={productsEncontrado.category || ""}
+            onChange={handleChange}
+            required
+          >
+            <option value="">Selecciona una categoría</option>
+            <option value="Entrante">Entrante</option>
+            <option value="Principal">Principal</option>
+            <option value="Postre">Postre</option>
+            <option value="Bebida">Bebida</option>
+          </select>
+        </div>
+        <button className="default-btn" type="submit">Modificar Producto</button>
+      </form>
+    </div>
   );
 }
 

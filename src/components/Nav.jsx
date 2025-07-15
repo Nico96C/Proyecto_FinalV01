@@ -52,6 +52,10 @@ function Nav() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  const handleNavClick = () => {
+    if (isMobile) setMenuOpen(false);
+  };
+
   if (loading) {
     return (
       <div className="loading-screen">
@@ -73,32 +77,32 @@ function Nav() {
       <nav className={`navbar-1${isMobile ? " mvl" : ""}${isMobile && menuOpen ? " open" : ""}`}>
         <ul className="nav-list">
           <li className="nav-element">
-            <Link className="nav-links" to="/">
+            <Link className="nav-links" to="/" onClick={handleNavClick}>
               INICIO
             </Link>
           </li>
           <li className="nav-element">
-            <a className="nav-links" href="#historia">
+            <a className="nav-links" href="#historia" onClick={handleNavClick}>
               HISTORIA
             </a>
           </li>
           <li className="nav-element">
-            <a className="nav-links" href="#menu">
+            <a className="nav-links" href="#menu" onClick={handleNavClick}>
               MENU
             </a>
           </li>
           <li className="nav-element">
-            <a className="nav-links" href="#reserva">
+            <a className="nav-links" href="#reserva" onClick={handleNavClick}>
               RESERVA
             </a>
           </li>
           <li className="nav-element">
-            <Link className="nav-links" to="/contact">
+            <Link className="nav-links" to="/contact" onClick={handleNavClick}>
               CONTACTO
             </Link>
           </li>
           {admin && <li className="nav-element">
-            <Link className="nav-links" to="/admin">
+            <Link className="nav-links" to="/admin" onClick={handleNavClick}>
               ADMIN
             </Link>
           </li>}
@@ -109,27 +113,27 @@ function Nav() {
                 Logout
               </button>
             ) : (
-              <Link className="default-btn" to="/login">
+              <Link className="default-btn" to="/login" onClick={handleNavClick}>
                 <img src={loginLogo} alt="Iniciar Sessión" width={25} height={25} />
                 Login
               </Link>
             )}
             {user && (
-              <Link className="nav-link-profile" to="/profile">
+              <Link className="nav-link-profile" to="/profile" onClick={handleNavClick}>
                 Perfil
               </Link>
             )}
           </li>
         </ul>
         {isMobile && (
-            <button
-              className="navbar-toggle"
-              onClick={() => setMenuOpen((open) => !open)}
-              aria-label="Abrir/Cerrar menú"
-            >
-              {menuOpen ? "▲" : "▼"}
-            </button>
-          )}
+          <button
+            className="navbar-toggle"
+            onClick={() => setMenuOpen((open) => !open)}
+            aria-label="Abrir/Cerrar menú"
+          >
+            {menuOpen ? "▲" : "▼"}
+          </button>
+        )}
       </nav>
     </header>
   );
