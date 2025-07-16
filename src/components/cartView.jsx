@@ -41,7 +41,6 @@ function CartView() {
                       className="cart-btn-delete"
                       onClick={() => {
                         eliminarDelCarrito(item.id);
-                        toast.error("Producto Eliminado!");
                       }}
                     >
                       Eliminar

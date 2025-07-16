@@ -19,11 +19,19 @@ function ModalDelete() {
   }, []);
 
   const [productos, setProductos] = useState([]);
+  const [showConfirm, setShowConfirm] = useState(false);
+  const [deleteId, setDeleteId] = useState(null);
   const { reloadProducts } = useProducts();
 
-  const handleDelete = (id) => {
+  const handleDeleteClick = (id) => {
+    setDeleteId(id);
+    setShowConfirm(true);
+  };
+
+  const confirmDelete = (id) => {
     new Promise((resolve, reject) => {
       try {
+        setShowConfirm(false);
         eliminarProducto(id);
         setProductos(productos.filter((producto) => producto.id !== id));
         reloadProducts();
@@ -33,6 +41,11 @@ function ModalDelete() {
         reject(error);
       }
     });
+  };
+
+  const cancelDelete = () => {
+    setShowConfirm(false);
+    setDeleteId(null);
   };
 
   return (
@@ -47,7 +60,7 @@ function ModalDelete() {
                 <h5 className="title-delete">{producto.name}</h5>
                 <button
                   className="btn-delete"
-                  onClick={() => handleDelete(producto.id)}
+                  onClick={() => handleDeleteClick(producto.id)}
                 >
                   <MdDeleteForever />
                 </button>
@@ -55,6 +68,15 @@ function ModalDelete() {
             </li>
           ))}
       </ul>
+      {showConfirm && (
+        <div className="modal-confirm">
+          <p>¿Está seguro de eliminar <b>{productos.find(p => p.id === deleteId)?.name || "este producto"}</b>?</p>
+          <div className="modal-confirm-actions">
+            <button onClick={confirmDelete}>Sí</button>
+            <button onClick={cancelDelete}>No</button>
+          </div>
+        </div>
+      )}
     </>
   );
 }

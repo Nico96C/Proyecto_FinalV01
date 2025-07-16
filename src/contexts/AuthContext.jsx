@@ -17,6 +17,7 @@ export function AuthProvider({ children }) {
 
   const login = (userData) => {
   if (userData.email === "admin@gmail.com") {
+    /* admin mail: admin@gmail.com y contraseña: admin123*/
     setAdmin(true);
     localStorage.setItem("admin", true);
   } else {

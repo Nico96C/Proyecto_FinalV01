@@ -202,6 +202,14 @@
   transition: color 0.3s ease-in-out;
 }
 
+.default-btn:disabled {
+  background-color: #ccc;
+  color: #888;
+  border: 1px solid var(--primary-color);
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
 .nav-link-profile {
   position: relative;
   text-decoration: none;
@@ -471,6 +479,8 @@
   width: 100%;
   max-width: 800px;
   padding: 2rem;
+  margin-bottom: 2rem;
+  margin-top: 1rem;
   background-color: var(--primary-color);
   color: white;
   border-radius: 10px;
@@ -491,6 +501,7 @@
   color: white;
   padding: 0.5rem 1rem;
   border: none;
+  text-decoration: none;
   border-radius: 5px;
   transition: all 0.5s ease;
 }
@@ -500,8 +511,10 @@
   color: white;
   padding: 0.5rem 1rem;
   border: none;
+  text-decoration: none;
   border-radius: 5px;
   transition: all 0.5s ease;
+  margin-bottom: 1rem;
 }
 
 /*CARD FLIP MENU*/
@@ -1041,6 +1054,16 @@
   flex-direction: column;
 }
 
+.welcome-message {
+  font-family: "croissantOne" !important;
+  color: white;
+  text-align: center;
+  background-color: var(--primary-color);
+  padding: 1rem;
+  border-radius: 5px;
+  border: 1px solid white;
+}
+
 /* RESERVAS Y AGENDA */
 
 .container-reserva {
@@ -1154,6 +1177,12 @@
   background-size: cover;
   flex-direction: row;
   align-items: center;
+}
+
+.title-admin {
+  font-family: "justa" !important;
+  font-size: 3rem;
+  color: white;
 }
 
 .admin-control-panel {
@@ -1279,6 +1308,44 @@
 
 .link-product:hover {
   color: white;
+}
+
+.modal-confirm {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(30, 30, 30, 0.7);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.modal-confirm button {
+  margin: 0 1rem;
+  padding: 0.5rem 1.5rem;
+  border-radius: 5px;
+  border: 1px solid white;
+  background: var(--primary-color);
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.modal-confirm button:hover {
+  background: #fff;
+  color: var(--primary-color, #a33);
+  border: 1px solid var(--primary-color);
+}
+
+.modal-confirm-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
 }
 
 /* PERFIL */

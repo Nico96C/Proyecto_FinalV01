@@ -10,12 +10,19 @@ import loadingScreen from "/imgs/loading.png";
 import { useCartContext } from "./contexts/CartContext";
 import { useProducts } from "./contexts/ProductsContext";
 import mark from "/imgs/mark.png";
+import { useState } from "react";
 
 function Home() {
 
   const { agregarAlCarrito } = useCartContext();
   const { products } = useProducts();
   const { loading, loadingPercent } = useProducts();
+  const [pageA, setPageA] = useState(0);
+  const [pageB, setPageB] = useState(0);
+  const [pageC, setPageC] = useState(0);
+  const [pageD, setPageD] = useState(0);
+
+  const itemsPerPage = 4;
 
   const productosA = products.filter(
     (producto) => producto.category === "Entrante"
@@ -46,21 +53,6 @@ function Home() {
       </div>
     );
   }
-
-  const notify = () => {
-    toast.dismiss();
-    toast.success("Producto Agregado al Carrito!", {
-      position: "top-right",
-      autoClose: 3000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: false,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-      transition: Slide,
-    });
-  };
 
   return (
     <>
@@ -231,7 +223,7 @@ function Home() {
           <div className="products">
             <h2 className="subtitle-menus">Entrantes</h2>
             <div className="cards-container">
-              {productosA.slice(0, 4).map((producto) => (
+              {productosA.slice(pageA * itemsPerPage, (pageA + 1) * itemsPerPage).map((producto) => (
                 <div key={producto.id} className="cards">
                   <img
                     className="img-card-product-home"
@@ -246,20 +238,35 @@ function Home() {
                     className="btn-buy"
                     onClick={() => {
                       agregarAlCarrito(producto);
-                      notify();
                     }}
                   >
                     Agregar al carrito
                   </button>
                 </div>
               ))}
+            </div>
+            <div className="pagination-btns">
+              <button
+                className="default-btn"
+                disabled={pageA === 0}
+                onClick={() => setPageA(pageA - 1)}
+              >
+                Anterior
+              </button>
+              <button
+                className="default-btn"
+                disabled={(pageA + 1) * itemsPerPage >= productosA.length}
+                onClick={() => setPageA(pageA + 1)}
+              >
+                Siguiente
+              </button>
             </div>
           </div>
 
           <div className="products">
             <h2 className="subtitle-menus">Principales</h2>
             <div className="cards-container">
-              {productosB.slice(0, 4).map((producto) => (
+              {productosB.slice(pageB * itemsPerPage, (pageB + 1) * itemsPerPage).map((producto) => (
                 <div key={producto.id} className="cards">
                   <img
                     className="img-card-product-home"
@@ -274,20 +281,35 @@ function Home() {
                     className="btn-buy"
                     onClick={() => {
                       agregarAlCarrito(producto);
-                      notify();
                     }}
                   >
                     Agregar al carrito
                   </button>
                 </div>
               ))}
+            </div>
+            <div className="pagination-btns">
+              <button
+                className="default-btn"
+                disabled={pageB === 0}
+                onClick={() => setPageB(pageB - 1)}
+              >
+                Anterior
+              </button>
+              <button
+                className="default-btn"
+                disabled={(pageB + 1) * itemsPerPage >= productosB.length}
+                onClick={() => setPageB(pageB + 1)}
+              >
+                Siguiente
+              </button>
             </div>
           </div>
 
           <div className="products">
             <h2 className="subtitle-menus">Postres</h2>
             <div className="cards-container">
-              {productosC.slice(0, 4).map((producto) => (
+              {productosC.slice(pageC * itemsPerPage, (pageC + 1) * itemsPerPage).map((producto) => (
                 <div key={producto.id} className="cards">
                   <img
                     className="img-card-product-home"
@@ -302,7 +324,6 @@ function Home() {
                     className="btn-buy"
                     onClick={() => {
                       agregarAlCarrito(producto);
-                      notify();
                     }}
                   >
                     Agregar al carrito
@@ -310,12 +331,28 @@ function Home() {
                 </div>
               ))}
             </div>
+            <div className="pagination-btns">
+              <button
+                className="default-btn"
+                disabled={pageC === 0}
+                onClick={() => setPageC(pageA - 1)}
+              >
+                Anterior
+              </button>
+              <button
+                className="default-btn"
+                disabled={(pageC + 1) * itemsPerPage >= productosC.length}
+                onClick={() => setPageC(pageC + 1)}
+              >
+                Siguiente
+              </button>
+            </div>
           </div>
 
           <div className="products">
             <h2 className="subtitle-menus">Bebidas</h2>
             <div className="cards-container">
-              {productosD.slice(0, 4).map((producto) => (
+              {productosD.slice(pageD * itemsPerPage, (pageD + 1) * itemsPerPage).map((producto) => (
                 <div key={producto.id} className="cards">
                   <img
                     className="img-card-product-home"
@@ -330,13 +367,28 @@ function Home() {
                     className="btn-buy"
                     onClick={() => {
                       agregarAlCarrito(producto);
-                      notify();
                     }}
                   >
                     Agregar al carrito
                   </button>
                 </div>
               ))}
+            </div>
+            <div className="pagination-btns">
+              <button
+                className="default-btn"
+                disabled={pageD === 0}
+                onClick={() => setPageD(pageD - 1)}
+              >
+                Anterior
+              </button>
+              <button
+                className="default-btn"
+                disabled={(pageD + 1) * itemsPerPage >= productosD.length}
+                onClick={() => setPageD(pageD + 1)}
+              >
+                Siguiente
+              </button>
             </div>
           </div>
         </div>

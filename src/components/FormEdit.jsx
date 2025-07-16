@@ -62,11 +62,11 @@ function FormEdit() {
   const handleSubmit2 = (e) => {
     e.preventDefault();
     if (!productsEncontrado.id) {
-      alert("No se encontró el ID del producto.");
+      toast.error("No se encontró el ID del producto.");
       return;
     }
     const validarForm = validarFormulario();
-    if (validarForm) {
+    if (validarForm === true) {
       editarProducto(productsEncontrado.id, productsEncontrado)
         .then(() => {
           setproductsEncontrado({
@@ -80,8 +80,7 @@ function FormEdit() {
           toast.success("¡Producto Modificado con exito!");
         })
         .catch((error) => {
-          console.error("Error al modificar el producto:", error);
-          alert("Error al modificar producto. Inténtalo de nuevo.");
+          toast.error("Error al modificar el producto!");
         });
     } else {
       alert("Validar formulario");

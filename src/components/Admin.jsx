@@ -12,7 +12,7 @@ export default function Admin() {
     <div className="container-admin">
       <div className="admin-control-panel">
         <div>
-          <h1>Admin</h1>
+          <h1 className="title-admin">Admin</h1>
           <p>Bienvenido al panel de administración.</p>
         </div>
         <button className="Admin-btn" onClick={() => setModal("agregar")}>

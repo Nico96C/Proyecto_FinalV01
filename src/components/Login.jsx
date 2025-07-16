@@ -74,15 +74,15 @@ function Login() {
     setErrorMsg("");
     try {
       await createUser(username, password, registerName)
-      .then((userData) => {
-        login(userData); // Pasa el objeto completo
-        notify1();
-        setUsername("");
-        setPassword("");
-      })
-      .catch(() => {
-        setErrorMsg("Error al registrar usuario o Logeo fallido");
-      });
+        .then((userData) => {
+          login(userData); // Pasa el objeto completo
+          notify1();
+          setUsername("");
+          setPassword("");
+        })
+        .catch(() => {
+          setErrorMsg("Error al registrar usuario o Logeo fallido");
+        });
 
       setUsername("");
       setPassword("");
@@ -103,11 +103,11 @@ function Login() {
     <div className="container-login">
 
       {user ? (
-        <>
-          <p>Bienvenido {user.displayName || user.email}!</p>
+        <div className="welcome-message">
+          <h1>Bienvenido {user.displayName || user.email}!</h1>
           <p>Ya puedes acceder a todas las opciones.</p>
-          <button onClick={handleLogout}>Cerrar Sesión</button>
-        </>
+          <button onClick={handleLogout} className="default-btn">Cerrar Sesión</button>
+        </div>
       ) : (
         <div>
           <div className="container-login-header">
@@ -140,7 +140,7 @@ function Login() {
                 onChange={(e) => setPassword(e.target.value)}
               />
               <br />
-              <button type="submit">Login</button>
+              <button type="submit" className="default-btn">Login</button>
               {errorMsg && <p style={{ color: "red" }}>{errorMsg}</p>}
             </form>
           ) : (
@@ -173,14 +173,14 @@ function Login() {
                 autoComplete="new-password"
               />
               <br />
-              <button type="submit" className="btn-register">
+              <button type="submit" className="default-btn">
                 Registrarse
               </button>
               {errorMsg && <p style={{ color: "red" }}>{errorMsg}</p>}
             </form>
           )}
           <button
-            className="btn-toggle-form"
+            className="default-btn"
             style={{ marginTop: "1rem" }}
             onClick={() => {
               setShowRegister((prev) => !prev);
