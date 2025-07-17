@@ -12,7 +12,7 @@ function ModalDelete() {
         const response = await todosLosProductos();
         setProductos(response);
       } catch (error) {
-        console.error("Error al obtener los productos:", error);
+        toast.error("Error al obtener los productos:", error);
       }
     };
     fetchProducts();
@@ -37,7 +37,7 @@ function ModalDelete() {
         reloadProducts();
         resolve();
       } catch (error) {
-        console.error("Error al eliminar el producto:", error);
+        toast.error("Error al eliminar el producto:");
         reject(error);
       }
     });

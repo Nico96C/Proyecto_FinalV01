@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { todosLosProductos } from "../assets/request";
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 function ModalSelect() {
   useEffect(() => {
@@ -10,7 +11,7 @@ function ModalSelect() {
         const response = await todosLosProductos();
         setProductos(response);
       } catch (error) {
-        console.error("Error al obtener los productos:", error);
+        toast.error("Error al obtener los productos:", error);
       }
     };
     fetchProducts();
