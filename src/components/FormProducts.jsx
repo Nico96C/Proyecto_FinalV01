@@ -11,6 +11,7 @@ function FormProducts() {
     description: "",
     img: "",
     category: "",
+    alergeno: [],
   });
   const { reloadProducts } = useProducts();
 
@@ -60,6 +61,7 @@ function FormProducts() {
           description: "",
           img: "",
           category: "",
+          alergeno: producto.alergeno || [],
         });
         toast.success("¡Producto Agregado con éxito!");
         reloadProducts();

@@ -18,6 +18,7 @@ export const ProductsProvider = ({ children }) => {
         return res.json();
       })
       .then((data) => {
+        console.log("Productos cargados:", data);
         setProducts(data);
         setLoading(false);
       })

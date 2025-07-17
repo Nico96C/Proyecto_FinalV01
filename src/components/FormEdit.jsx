@@ -11,6 +11,24 @@ function FormEdit() {
 
   const Productos = todosLosProductos();
 
+  const ALERGENOS = [
+    "Contiene gluten",
+    "Crustáceos",
+    "Huevos",
+    "Pescado",
+    "Cacahuetes",
+    "Soja",
+    "Lácteos",
+    "Frutos de cáscara",
+    "Apio",
+    "Mostaza",
+    "Granos de sésamo",
+    "Dióxido de azufre y sulfitos",
+    "Moluscos",
+    "Altramuces",
+    "Sin alérgenos",
+  ];
+
   useEffect(() => {
     if (Productos) {
       Productos.then((data) => {
@@ -23,6 +41,7 @@ function FormEdit() {
             description: producto.description,
             img: producto.img,
             category: producto.category,
+            alergeno: producto.alergeno || [],
           });
         } else {
           console.error("Producto no encontrado");
@@ -69,15 +88,8 @@ function FormEdit() {
     if (validarForm === true) {
       editarProducto(productsEncontrado.id, productsEncontrado)
         .then(() => {
-          setproductsEncontrado({
-            name: "",
-            price: "",
-            description: "",
-            img: "",
-            category: "",
-          });
-          reloadProducts();
           toast.success("¡Producto Modificado con exito!");
+          reloadProducts();
         })
         .catch((error) => {
           toast.error("Error al modificar el producto!");
@@ -112,7 +124,7 @@ function FormEdit() {
           />
           <img
             className="img-edit-form"
-            src={productsEncontrado.img} 
+            src={productsEncontrado.img}
           />
         </div>
         <div>
@@ -135,6 +147,34 @@ function FormEdit() {
             required
           />
         </div>
+        <section>
+          <label>Alérgenos:</label>
+          <div className="alergenos-list">
+            {ALERGENOS.map((nombre, idx) => (
+              <label key={nombre} className="alergeno-item">
+                <input
+                  type="checkbox"
+                  name="alergeno"
+                  value={nombre}
+                  checked={productsEncontrado.alergeno?.includes(nombre)}
+                  onChange={(e) => {
+                    const checked = e.target.checked;
+                    setproductsEncontrado((prev) => {
+                      let nuevosAlergenos = prev.alergeno || [];
+                      if (checked) {
+                        nuevosAlergenos = [...nuevosAlergenos, nombre];
+                      } else {
+                        nuevosAlergenos = nuevosAlergenos.filter((a) => a !== nombre);
+                      }
+                      return { ...prev, alergeno: nuevosAlergenos };
+                    });
+                  }}
+                />
+                {nombre}
+              </label>
+            ))}
+          </div>
+        </section>
         <div>
           <label>Category:</label>
           <select

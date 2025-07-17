@@ -19,6 +19,8 @@ import cartIcon from "/imgs/cart.png";
 import Login from "./components/Login";
 import { useAuthContext } from "./contexts/AuthContext";
 import { useCartContext } from "./contexts/CartContext";
+import { Link } from "react-router-dom";
+import loginLogo from "/imgs/login.png";
 import FormEdit from "./components/FormEdit";
 import Profile from "./components/Profile";
 import Footer from "./components/Footer";
@@ -93,7 +95,13 @@ function App() {
           <button className="close-cart-btn" onClick={handleCartClick}>
             &times;
           </button>
-          <h1>Inicia sesión para ver tu carrito</h1>
+          <div className="cart-login-prompt">
+            <h1>Inicia sesión para ver tu carrito</h1>
+            <Link to="/login" className="default-btn">
+              <img src={loginLogo} alt="Iniciar Sessión" width={25} height={25} />
+              Login
+            </Link>
+          </div>
         </div>
       )}
     </Router>

@@ -5,7 +5,7 @@ import { guardarPedido } from "../Auth/FirebaseConfig";
 function CartView() {
   const { limpiarCarrito, eliminarDelCarrito, cartItems } = useCartContext();
 
-  const total = cartItems.reduce((acc, item) => acc + Number(item.price), 0);
+  const total = cartItems.reduce((acc, item) => acc + Number(item.price) * item.cantidad, 0);
 
   const handleConfirmarPedido = async () => {
     try {
@@ -45,10 +45,11 @@ function CartView() {
                     >
                       Eliminar
                     </button>
-                    <div className="card-text-cart">${item.price}</div>
+                    <div className="card-text-cart">
+                      x{item.cantidad} / €{(item.price * item.cantidad).toFixed(2)}
+                    </div>
                   </div>
                 </div>
-
               </div>
             ))}
           </div>

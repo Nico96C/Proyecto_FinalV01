@@ -4,7 +4,9 @@ import interactionPlugin from "@fullcalendar/interaction";
 import { useState } from "react";
 import { useAuthContext } from "../contexts/AuthContext";
 import { guardarReserva } from "../Auth/FirebaseConfig";
+import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import loginLogo from "/imgs/login.png";
 
 function Reserva() {
   const { user } = useAuthContext();
@@ -101,8 +103,14 @@ function Reserva() {
             </form>
           )}
           {!user && (
-            <div className="reserva-form-error">
-              Debes iniciar sesión para reservar.
+            <div className="reserva-form-error-container">
+              <div className="reserva-form-error">
+                Debes iniciar sesión para reservar.
+              </div>
+              <Link href="/login" className="default-btn">
+                <img src={loginLogo} alt="Iniciar Sessión" width={25} height={25} />
+                Login
+              </Link>
             </div>
           )}
         </div>

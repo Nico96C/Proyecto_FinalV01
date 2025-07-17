@@ -14,8 +14,19 @@ export function CartProvider({ children }) {
         localStorage.setItem("cartItems", JSON.stringify(cartItems));
     }, [cartItems]);
 
-    const agregarAlCarrito = (producto) => {
-        setCartItems(() => [...cartItems, producto]);
+    const agregarAlCarrito = (producto, cantidad = 1) => {
+        setCartItems((prevCartItems) => {
+            const existe = prevCartItems.find((item) => item.id === producto.id);
+            if (existe) {
+                return prevCartItems.map((item) =>
+                    item.id === producto.id
+                        ? { ...item, cantidad: Math.min(item.cantidad + cantidad, 9) }
+                        : item
+                );
+            } else {
+                return [...prevCartItems, { ...producto, cantidad: Math.min(cantidad, 9) }];
+            }
+        });
         toast.success("Producto agregado al carrito!");
     };
 
