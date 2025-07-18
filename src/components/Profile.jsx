@@ -8,7 +8,8 @@ function Profile() {
   const { user } = useAuthContext();
   const [pedidos, setPedidos] = useState([]);
   const [reservas, setReservas] = useState([]);
-  // Estados para manejar el formulario de dirección
+
+  /* Estados para manejar el formulario de dirección */
   const [nombre, setNombre] = useState("");
   const [direccion1, setDireccion1] = useState("");
   const [direccion2, setDireccion2] = useState("");
@@ -16,10 +17,10 @@ function Profile() {
   const [localidad, setLocalidad] = useState("");
   const [postal, setPostal] = useState("");
 
-  // Estado para manejar direcciones
+  /* Estado para manejar direcciones */
   const [address, setAddress] = useState([]);
 
-  // Estado para manejar productos
+  /* Estado para manejar productos */
   const [loading, setLoading] = useState(true);
   const [productosMap, setProductosMap] = useState({});
 
@@ -29,7 +30,7 @@ function Profile() {
     const fetchPedidosYProductos = async () => {
       setLoading(true);
       try {
-        // Trae todos los productos y crea un mapa id -> nombre
+        /* Trae todos los productos y crea un mapa id -> nombre */
         const productos = await todosLosProductos();
         const map = {};
         productos.forEach((prod) => {
@@ -37,7 +38,7 @@ function Profile() {
         });
         setProductosMap(map);
 
-        // Trae los pedidos y reservas del usuario
+        /* Trae los pedidos y reservas del usuario */
         const pedidosUsuario = await obtenerPedidosUsuario();
         const reservasUsuario = await obtenerReservasUsuario();
         const direccionesUsuario = await obtenerDireccionUsuario();
@@ -58,7 +59,7 @@ function Profile() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Validación básica
+    /* Validación básica */
     if (!nombre.trim()) {
       alert("El nombre es obligatorio.");
       return;
@@ -83,14 +84,14 @@ function Profile() {
     try {
       await guardarDireccion(nombre, direccion1, direccion2, ciudad, localidad, postal);
       toast.success("Dirección guardada correctamente.");
-      // Limpia los campos si quieres
+      /* Limpia los campos */
       setNombre("");
       setDireccion1("");
       setDireccion2("");
       setCiudad("");
       setLocalidad("");
       setPostal("");
-      // Actualiza la lista de direcciones
+      /* Actualiza la lista de direcciones */
       const direcciones = await obtenerDireccionUsuario();
       setAddress(direcciones);
     } catch (error) {

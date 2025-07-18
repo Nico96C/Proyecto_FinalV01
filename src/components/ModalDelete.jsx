@@ -6,7 +6,7 @@ import { useProducts } from "../contexts/ProductsContext";
 
 function ModalDelete() {
   useEffect(() => {
-    // Fetch de productos
+    /* Fetch de productos */
     const fetchProducts = async () => {
       try {
         const response = await todosLosProductos();

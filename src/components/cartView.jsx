@@ -9,9 +9,10 @@ function CartView() {
 
   const handleConfirmarPedido = async () => {
     try {
-      // Obtén los IDs de los productos del carrito
+      /* Obtén los IDs de los productos del carrito */
       const productosIds = cartItems.map((item) => item.id);
-      // Llama a la función para guardar el pedido
+      
+      /* Llama a la función para guardar el pedido */
       await guardarPedido(productosIds, "pendiente", total);
       toast.success("¡Pedido realizado con éxito!");
       limpiarCarrito();

@@ -22,7 +22,7 @@ const firebaseConfig = {
   storageBucket: import.meta.env.VITE_FIREBASE_APP_STORAGE_BUCKET,
   messagingSenderId: import.meta.env.VITE_FIREBASE_APP_MESSAGING_SENDER_ID,
   appId: import.meta.env.VITE_FIREBASE_APP_APP_ID,
-  // databaseURL: import.meta.env.VITE_FIREBASE_APP_DATABASE_URL
+  /* databaseURL: import.meta.env.VITE_FIREBASE_APP_DATABASE_URL */
 };
 
 const app = initializeApp(firebaseConfig);
@@ -30,7 +30,7 @@ const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const db = getFirestore(app);
 
-// Adaptada: retorna la promesa para poder usar await y catch en Login.jsx
+/* Adaptada: retorna la promesa para poder usar await y catch en Login.jsx */
 export async function createUser(email, password, displayName = "") {
   try {
     const userCredential = await createUserWithEmailAndPassword(

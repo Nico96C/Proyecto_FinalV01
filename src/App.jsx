@@ -29,9 +29,8 @@ import ScrollToTop from "./ScrollToTop";
 function App() {
   const { user, admin } = useAuthContext();
   const { cartItems } = useCartContext();
-
-  const [visualCart, setVisualCart] = useState(false);
   /* ESTADOS */
+  const [visualCart, setVisualCart] = useState(false);
 
   const handleCartClick = () => {
     setVisualCart(!visualCart);

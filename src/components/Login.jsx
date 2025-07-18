@@ -12,43 +12,13 @@ function Login() {
   const [showRegister, setShowRegister] = useState(false);
   const { user, login, logout } = useAuthContext();
 
-  const notify1 = () => {
-    toast.dismiss();
-    toast.success("Sessión Iniciada", {
-      position: "top-right",
-      autoClose: 3000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: false,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-      transition: Slide,
-    });
-  };
-
-  const notify2 = () => {
-    toast.dismiss();
-    toast.error("Sessión Cerrada", {
-      position: "top-right",
-      autoClose: 3000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: false,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-      transition: Slide,
-    });
-  };
-
-  // Login con Firebase
+  /* Login con Firebase */
   function LoginWithEmailPass(e) {
     e.preventDefault();
     loginEmailPass(username, password)
       .then((userData) => {
-        login(userData); // Pasa el objeto completo
-        notify1();
+        login(userData); /* Pasa el objeto completo */
+        toast.success("Sessión Iniciada");
         setUsername("");
         setPassword("");
       })
@@ -57,7 +27,7 @@ function Login() {
       });
   }
 
-  // Login
+  /* Login (Antes Local) */
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrorMsg("");
@@ -68,15 +38,15 @@ function Login() {
     }
   };
 
-  // Registro con Firebase
+  /* Registro con Firebase */
   const handleRegister = async (e) => {
     e.preventDefault();
     setErrorMsg("");
     try {
       await createUser(username, password, registerName)
         .then((userData) => {
-          login(userData); // Pasa el objeto completo
-          notify1();
+          login(userData); /* Pasa el objeto completo */
+          toast.success("Sessión Iniciada")
           setUsername("");
           setPassword("");
         })
@@ -91,12 +61,12 @@ function Login() {
     }
   };
 
-  // Logout
+  /* Logout */
   const handleLogout = () => {
     logout();
     setUsername("");
     setPassword("");
-    notify2();
+    toast.error("Sessión Cerrada")
   };
 
   return (

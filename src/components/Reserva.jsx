@@ -10,6 +10,7 @@ import loginLogo from "/imgs/login.png";
 
 function Reserva() {
   const { user } = useAuthContext();
+  /* Estados para manejar la reserva */
   const [fechaSeleccionada, setFechaSeleccionada] = useState("");
   const [nombre, setNombre] = useState("");
   const [personas, setPersonas] = useState(0);
@@ -46,7 +47,7 @@ function Reserva() {
       return;
     }
 
-    //datos para guardar el pedido firebase
+    /*datos para guardar el pedido firebase*/
     try {
       await guardarReserva(nombre, personas, fechaSeleccionada, "pendiente", total);
       setNombre("");

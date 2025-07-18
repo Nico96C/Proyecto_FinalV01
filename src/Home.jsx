@@ -81,8 +81,8 @@ function Home() {
                     alt="restaurante-parrilla-2"
                   />
                   <div className="carousel-text">
-                    <h2>Texto para la tercera imagen</h2>
-                    <p>Descripción adicional para la tercera imagen.</p>
+                    <h2>Restaurante Clasico</h2>
+                    <p>Lo ultimo en la comida mas rica de andalucia y Sevilla.</p>
                   </div>
                 </div>
               </div>
@@ -94,8 +94,8 @@ function Home() {
                     alt="restaurante-parrilla-2"
                   />
                   <div className="carousel-text">
-                    <h2>Texto para la tercera imagen</h2>
-                    <p>Descripción adicional para la tercera imagen.</p>
+                    <h2>Parrilla a la vista</h2>
+                    <p>Puede estar seguro de la calidad hasta de nuestras carnes.</p>
                   </div>
                 </div>
               </div>
@@ -107,8 +107,8 @@ function Home() {
                     alt="restaurante-parrilla-2"
                   />
                   <div className="carousel-text">
-                    <h2>Texto para la tercera imagen</h2>
-                    <p>Descripción adicional para la tercera imagen.</p>
+                    <h2>Carnes en variedad</h2>
+                    <p>Gran variedad en el menu y la mejorar calidad.</p>
                   </div>
                 </div>
               </div>
@@ -120,8 +120,8 @@ function Home() {
                     alt="restaurante-parrilla-2"
                   />
                   <div className="carousel-text">
-                    <h2>Texto para la tercera imagen</h2>
-                    <p>Descripción adicional para la tercera imagen.</p>
+                    <h2>Parrillas a leña</h2>
+                    <p>El mejor gusto para la carne.</p>
                   </div>
                 </div>
               </div>
@@ -166,9 +166,14 @@ function Home() {
                     <p> Lo mejor en cuanto a entradas tipicas provenientes de Sevilla </p>
                   </div>
                   <div className="flip-card-back">
-                    <button className="btn-flipcard">
+                    <a
+                      href="/pdfs/La Sevillana - Entrantes.pdf"
+                      download="LaSevillana-Entrantes.pdf"
+                      className="btn-flipcard"
+                      onClick={() => toast.info("Menú descargado")}
+                    >
                       Descargar
-                    </button>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -180,9 +185,14 @@ function Home() {
                     <p> Platos de lo mas variado para unas comidas principales con el toque andaluz </p>
                   </div>
                   <div className="flip-card-back">
-                    <button className="btn-flipcard">
+                    <a
+                      href="/pdfs/La Sevillana - Principales.pdf"
+                      download="LaSevillana-Principales.pdf"
+                      className="btn-flipcard"
+                      onClick={() => toast.info("Menú descargado")}
+                    >
                       Descargar
-                    </button>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -194,9 +204,14 @@ function Home() {
                     <p> Unos postres de alta categoria para cerrar una comida completa </p>
                   </div>
                   <div className="flip-card-back">
-                    <button className="btn-flipcard">
+                    <a
+                      href="/pdfs/La Sevillana - Postres.pdf"
+                      download="LaSevillana-Postres.pdf"
+                      className="btn-flipcard"
+                      onClick={() => toast.info("Menú descargado")}
+                    >
                       Descargar
-                    </button>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -208,9 +223,14 @@ function Home() {
                     <p> Las bebidas mas disfrutables, desde los mejores vinos hasta el agua mas fresca </p>
                   </div>
                   <div className="flip-card-back">
-                    <button className="btn-flipcard">
+                    <a
+                      href="/pdfs/La Sevillana - Bebidas.pdf"
+                      download="LaSevillana-Bebidas.pdf"
+                      className="btn-flipcard"
+                      onClick={() => toast.info("Menú descargado")}
+                    >
                       Descargar
-                    </button>
+                    </a>
                   </div>
                 </div>
               </div>

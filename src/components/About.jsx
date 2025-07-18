@@ -6,6 +6,7 @@ function AcercaDe() {
       <p>
         Esta es una aplicación de ejemplo que utiliza React y Tailwind CSS.
         Puedes usarla para aprender más sobre estas tecnologías.
+        SECCIÓN SIN USO
       </p>
     </div>
   );

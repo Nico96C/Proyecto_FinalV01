@@ -13,6 +13,7 @@ function Menu() {
 
   const [alergenoFiltro, setAlergenoFiltro] = useState("");
 
+  /* Array de alérgenos con sus iconos */
   const ICONOS_ALERGENOS = {
     "Contiene gluten": "https://ik.imagekit.io/m3g4ID/Proyecto-TalentoTech/Mock-Alergenos/simbolo-alergeno-cereales.png?updatedAt=1752775414689",
     "Crustáceos": "https://ik.imagekit.io/m3g4ID/Proyecto-TalentoTech/Mock-Alergenos/simbolo-alergeno-crustaceo.png?updatedAt=1752777096120",
@@ -31,14 +32,14 @@ function Menu() {
     "Sin alérgenos": "https://ik.imagekit.io/m3g4ID/Proyecto-TalentoTech/Mock-Alergenos/Adobe%20Express%20-%20file.png?updatedAt=1752776338780"
   };
 
-  // filtro de búsqueda y alérgenos
+  /* filtro de búsqueda y alérgenos */
   const productosFiltrados = products.filter((producto) =>
     producto.name.toLowerCase().includes(search.toLowerCase()) &&
     (alergenoFiltro === "" || producto.alergeno?.includes(alergenoFiltro))
   );
 
 
-  // Filtrar productos por categoría
+  /* Filtrar productos por categoría */
   const productosA = productosFiltrados.filter(
     (producto) => producto.category === "Entrante"
   );
@@ -73,10 +74,7 @@ function Menu() {
         </p>
       </div>
 
-
-
       <div className="menu-seccion-container">
-
         <div className="filters-menu">
           <div>
             <div>FILTROS</div>
@@ -111,7 +109,6 @@ function Menu() {
             </div>
           </div>
         </div>
-
 
         <h2 className="category-menu-title">Entrantes</h2>
         <div className="cards-menu-container">

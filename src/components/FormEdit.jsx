@@ -11,6 +11,7 @@ function FormEdit() {
 
   const Productos = todosLosProductos();
 
+  /* Lista de alérgenos */
   const ALERGENOS = [
     "Contiene gluten",
     "Crustáceos",

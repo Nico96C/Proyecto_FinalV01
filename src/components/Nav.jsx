@@ -8,7 +8,7 @@ import loginLogo from "/imgs/login.png";
 import logoutLogo from "/imgs/Logout.png";
 
 function Nav() {
-
+  /* Estados para manejar el menú y la visibilidad del header */
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -20,7 +20,7 @@ function Nav() {
 
   useEffect(() => {
     if (isMobile) return;
-    // Handle scroll event to show/hide header
+    /* Para mostrar o no el header al hacer Scroll */
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
 

@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 
 function ModalSelect() {
   useEffect(() => {
-    // Fetch de productos
+    /* Fetch de productos */
     const fetchProducts = async () => {
       try {
         const response = await todosLosProductos();
