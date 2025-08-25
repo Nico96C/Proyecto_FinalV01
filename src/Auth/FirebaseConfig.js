@@ -100,7 +100,6 @@ export async function guardarReserva(nameUser, peopleNumber, dateOrder, estado, 
   if (!auth.currentUser) throw new Error("Usuario no autenticado");
 
   const reserva = {
-
     name: nameUser,
     people: peopleNumber,
     date: dateOrder,
@@ -124,6 +123,7 @@ export async function obtenerReservasUsuario() {
   return querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
 }
 /* RESERVAS FIREBASE */
+/*asdasd*/
 
 /* DIRECCIONES FIREBASE */
 export async function guardarDireccion(nombre, direccion1, direccion2, ciudad, localidad, postal) {
